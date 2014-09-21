@@ -1,0 +1,14 @@
+{% set title="CSH 5K Registration" %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}" />
+		<script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		{% block body %}{% endblock %}
+	</body>
+</html>
