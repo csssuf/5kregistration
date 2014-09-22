@@ -1,5 +1,5 @@
 from project import app
-from project.views import core
+from project.views import core, register
 
 def add_url_routes(routes_tuple):
     for route, view_function in routes_tuple:
@@ -8,5 +8,5 @@ def add_url_routes(routes_tuple):
 
 add_url_routes((
     ('/', core.index),
-    ('/index', core.index)
+    ('/register/', register.reg)
 ))
