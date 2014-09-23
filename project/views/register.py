@@ -19,4 +19,15 @@ def reg():
         return redirect('/')
 
 def verify():
+    if not request.args or not "key" in request.args or not "user" in request.args:
+        return redirect('/')
+    actuser = RegisteredUser.query.filter(RegisteredUser.email == request.args["user"]).first()
+    if not actuser:
+        return redirect('/')
+    if actuser.paid:
+        return redirect('/')
+    if actuser.reg_uuid == request.args["key"]:
+        actuser.emailverified = True
+        db_session.commit()
+        return redirect('/payment/')
     return render_template("verify.html")
