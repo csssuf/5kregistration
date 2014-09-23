@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
+
 <div class="container">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -20,16 +21,16 @@
         <li><a href="#about">About</a></li>
         <li><a href="#register">Register</a></li>
         <li><a href="#course">Course</a></li>
-        <li><a href="/verify/">Verification Page(TEMP)</a></li>
-        
+        <li><a href="verify.html">Verification Page(TEMP)</a></li>
+
       </ul>
       <ul class="nav navbar-text navbar-right">
-        <a class="navbar-text-a" href="http://csh.rit.edu">Sponsored by CSH</a></span>
+        <a class="navbar-text-a" href="http://csh.rit.edu">Sponsored by CSH</a>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-	  <a name="home"></a>
+    <a name="home"></a>
       <div class="jumbotron">
         <h1>Welcome Message</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
@@ -38,7 +39,7 @@
 <a name="about"></a>
       <div class="row marketing">
       <div class="page-header">
-      
+
       <h1 class="custom-header"  style="color:#FFF">What is it?</h1></div>
         <div class="col-lg-6"  style="color:#FFF">
           <h4>Subheading</h4>
@@ -62,24 +63,21 @@
           <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
       </div>
-      
+
       <a name="register"></a><div class="jumbotron" style="background-color:#996633; color: #FF9900;">
-      
+
         <h1>Pre-Register Today!</h1>
         <p class="lead">Enter your email address to register</p>
-   <form action="/register/" method="POST">
+   <form enctype="text/plain" action="#">
         <input name="email" type="text" id="email" class="form-control" placeholder="Email">
      <input type="submit" name="submit" value="Register" id="submit" class="submit-button">
      </form>
       </div>
-	 <a name="course"></a> <div id="map-canvas" class="map"></div>
+   <a name="course"></a> <div id="map-canvas" class="map"></div>
       <div class="footer">
         <p>&copy; CSH 2014. Designed by Brandon Hudson.</p>
       </div>
 
     </div> <!-- /container -->
 
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 {% endblock %}/

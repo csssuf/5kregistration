@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block bodystyle %} style="background-color: #F6F6F6"{% endblock %}
+{% block body %}
+
+<div class="container">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">CSH Costume 5K</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+
+        </ul>
+        <ul class="nav navbar-text navbar-right">
+          <a class="navbar-text-a" href="http://csh.rit.edu">Sponsored by CSH</a>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</div>
+<div class="jumbotron" style="padding-top: 15%;" id="register">
+  <h1>Just a Few More Steps!</h1>
+  <noscript>
+    <div class="row">
+      <div class="alert alert-danger col-xs-6 col-xs-offset-3">
+        <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;JavaScript is required to pay with credit.</p>
+      </div>
+    </div>
+  </noscript>
+  <form action="/charge" method="post">
+    <p class="lead">I would like to pay with:</p>
+    <p class="checkout-buttons">
+      <button class="cust-btn btn-billing" type="submit" name="type" value="cash"   role="button" style="text-transform: none; text-decoration:none; color:#FFF;">Cash</button>
+      <button class="cust-btn btn-billing" type="submit" name="type" value="credit" role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled="disabled">Credit</button>
+    </p>
+    <input type="hidden" name="amount" value="1000"
+  </form>
+  <div id="flash-message" class="alert col-xs-8 col-xs-offset-2" style="display: none"></div>
+</div>
+<div class="jumbotron" style="padding-top: 15%; display: none" id="complete">
+  <h1>Thank You!</h1>
+  <br>
+  <div class="alert alert-success col-xs-8 col-xs-offset-2">
+    <p>You have successfully registered for the run.<br>Can't wait to see you there!</p>
+    <p id="cash-reminder" style="display: none"><i>Please remember to bring $10 to the race.</i></p>
+  </div>
+</div>
+
+<div class="footer-custom">
+  <p>&copy; CSH 2014. Designed by Brandon Hudson.</p>
+</div>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block bodystyle %} style="background-color: #F6F6F6"{% endblock %}
 {% block body %}
+
 <div class="container">
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -18,30 +19,27 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        
+        <li><a href="index.html">Home</a></li>
+
       </ul>
       <ul class="nav navbar-text navbar-right">
-        <a class="navbar-text-a" href="http://csh.rit.edu">Sponsored by CSH</a></span>
+        <a class="navbar-text-a" href="http://csh.rit.edu">Sponsored by CSH</a>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-	  <a name="home"></a>
+    <a name="home"></a>
       <div class="jumbotron" style=" padding-top:15%;">
         <h1>Thank You for Registering!</h1>
-        <p class="lead">You're almost there! Please verify your email address to continue. <br>Didn't recieve the verification email? 
+        <p class="lead">You're almost there! Please verify your email address to continue. <br>Didn't recieve the verification email?
         <p><a class="cust-btn btn-prereg" href="#resend" role="button" style="text-transform: none; text-decoration:none; color:#FFF">Re-send Verification</a></p>
       </div>
 <a name="about"></a>
-      
+
       <div class="footer-custom">
         <p>&copy; CSH 2014. Designed by Brandon Hudson.</p>
       </div>
 
     </div> <!-- /container -->
 
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 {% endblock %}
