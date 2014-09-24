@@ -49,7 +49,7 @@
 
   var stripe = StripeCheckout.configure({
     key: 'pk_test_iTRx0tT5GH6J3m7bYjny6tBM',
-    image: '/images/csh-stripe-checkout-logo.png',
+    image: '/static/images/csh-stripe-checkout-logo.png',
     token: function(token) {
       processPayment("credit", token);
     },
