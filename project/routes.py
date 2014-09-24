@@ -9,5 +9,6 @@ def add_url_routes(routes_tuple):
 add_url_routes((
     ('/', core.index),
     ('/register/', register.reg),
-    ('/verify/', register.verify)
+    ('/verify/', register.verify),
+    ('/billing/', register.billing)
 ))

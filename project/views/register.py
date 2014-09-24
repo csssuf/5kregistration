@@ -31,3 +31,6 @@ def verify():
         db_session.commit()
         return redirect('/payment/')
     return render_template("verify.html")
+
+def billing():
+    return render_template("billing.html")
