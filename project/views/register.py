@@ -1,10 +1,11 @@
-from flask import render_template, flash, session, request, redirect
+from flask import render_template, flash, session, request, redirect, Response
 from project.models import RegisteredUser
 from project.database import db_session
 import datetime
 import uuid
 import smtplib
 import urllib
+import stripe
 
 def reg():
     if request.method == "POST":
@@ -42,3 +43,58 @@ def verify():
 
 def billing():
     return render_template("billing.html")
+
+def pay():
+    if request.method == "POST":
+        if request.form['type'] == 'cash':
+            return pay_with_cash(
+                request.form['name'],
+                request.form['price']
+                )
+        elif request.form['type'] == 'credit':
+            return pay_with_stripe(
+                request.form['name'],
+                request.form['price'],
+                request.form['token']
+                )
+        else:
+            return Response('Invalid payment type', 400)
+    else:
+        return Response('Invalid payment method', 400)
+
+def pay_with_stripe(name, req_price, stripe_token):
+    stripe.api_key = "sk_test_key"
+
+    if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
+        price = 1500
+    else:
+        price = 1000
+
+    if price != int(req_price):
+        return Response('Incorrect price requested. Expected %d, got %d' %(price, int(req_price)), 400)
+    else:
+        try:
+            charge = stripe.Charge.create(
+              amount=price,
+              currency="usd",
+              card=stripe_token,
+              description="Registration fee for CSH Costume 5K"
+            )
+        except stripe.CardError as e:
+            return Response(e.message + " Please try again.", 400)
+        except (stripe.InvalidRequestError, stripe.AuthenticationError, stripe.APIConnectionError, stripe.StripeError) as e:
+            return Response("Sorry, an error ocurred. Please try again in a bit.", 500)
+
+        if charge.paid:
+
+            # update db
+
+            return Response('Paid', 200)
+        else:
+            return Response('Payment failed', 400)
+
+def pay_with_cash(name, price):
+
+    # update db
+
+    return Response('Paid', 200)

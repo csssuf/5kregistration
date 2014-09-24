@@ -4,6 +4,8 @@
 
   var price = $('form input[name="amount"]').val();
 
+  // TODO: move into common.js
+
   var flash = function(message, type) {
     var element = $('#flash-message');
 
@@ -22,7 +24,9 @@
   };
 
   var processPayment = function(type, token) {
-    $.post( "http://jsonplaceholder.typicode.com/posts", { type: type, amount: price, token: token.id })
+    var name = $('form input[name=name]').val();
+    var price = $('form input[name=amount]').val();
+    $.post( "/pay/", { type: type, name: name, price: price, token: token.id })
       .done(function() {
         flash("", "");
         $('#register').slideUp(500);
@@ -30,9 +34,11 @@
         if (type === "cash")
           $("#cash-reminder").show();
       })
-      .fail(function() {
+      .fail(function(response) {
         setProcessing(false);
-        flash("Sorry, an error ocurred. Please try again.", "danger");
+        console.log(response.responseText);
+        message = response.responseText ? response.responseText : "Sorry, an error ocurred. Please try again.";
+        flash(message, "danger");
       });
   };
 
