@@ -10,6 +10,6 @@ add_url_routes((
     ('/', core.index),
     ('/register/', register.reg),
     ('/verify/', register.verify),
-    ('/billing/', register.billing),
-    ('/pay/', register.pay)
+    ('/billing/<int:uid>/', register.billing),
+    ('/pay/<int:uid>/', register.pay)
 ))
