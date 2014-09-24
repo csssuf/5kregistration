@@ -3,6 +3,8 @@ from project.models import RegisteredUser
 from project.database import db_session
 import datetime
 import uuid
+import smtplib
+import urllib
 
 def reg():
     if request.method == "POST":
@@ -11,6 +13,13 @@ def reg():
             flash("Error: that email is already registered.")
             return redirect('/')
         reguuid = uuid.uuid1()
+        mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for Charity: Water!
+
+To confirm your email address, please click here:
+    http://5k.csh.rit.edu/verify?key=%s&user=%s""" % (request.form["email"], reguuid, urllib.quote(request.form["email"])
+        server = smtplib.SMTP("mail.csh.rit.edu")
+        server.sendmail("5k@csh.rit.edu", [request.form["email"]], mail)
+        server.quit()
         newuser = RegisteredUser(email=request.form["email"],
                 date=datetime.datetime.now(), reg_uuid = reguuid)
         db_session.add(newuser)
