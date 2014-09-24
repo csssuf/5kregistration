@@ -15,8 +15,7 @@ def reg():
         reguuid = uuid.uuid1()
         mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for Charity: Water!
 
-To confirm your email address, please click here:
-    http://5k.csh.rit.edu/verify?key=%s&user=%s""" % (request.form["email"], reguuid, urllib.quote(request.form["email"])
+To confirm your email address, please click here: http://5k.csh.rit.edu/verify?key=%s&user=%s""" % (request.form["email"], reguuid, urllib.quote(request.form["email"]))
         server = smtplib.SMTP("mail.csh.rit.edu")
         server.sendmail("5k@csh.rit.edu", [request.form["email"]], mail)
         server.quit()
