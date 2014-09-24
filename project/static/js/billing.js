@@ -26,7 +26,10 @@
   var processPayment = function(type, token) {
     var name = $('form input[name=name]').val();
     var price = $('form input[name=amount]').val();
-    $.post( "/pay/", { type: type, name: name, price: price, token: token.id })
+    var uid, paths = window.location.pathname.split('/');
+    if (paths.length == 4)
+      uid = paths[2];
+    $.post( "/pay/" + uid + "/", { type: type, name: name, price: price, token: token.id })
       .done(function() {
         flash("", "");
         $('#register').slideUp(500);
@@ -36,8 +39,7 @@
       })
       .fail(function(response) {
         setProcessing(false);
-        console.log(response.responseText);
-        message = response.responseText ? response.responseText : "Sorry, an error ocurred. Please try again.";
+        message = response ? response.responseText : "Sorry, an error ocurred. Please try again.";
         flash(message, "danger");
       });
   };

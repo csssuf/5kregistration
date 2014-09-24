@@ -41,18 +41,30 @@ def verify():
         return redirect('/payment/')
     return render_template("verify.html")
 
-def billing():
+def billing(uid):
+
+    actuser = RegisteredUser.query.filter(RegisteredUser.id == uid).first()
+    if not actuser:
+        flash('Invalid participant', 'danger')
+
     return render_template("billing.html")
 
-def pay():
+def pay(uid):
+
+    actuser = RegisteredUser.query.filter(RegisteredUser.id == uid).first()
+    if not actuser:
+        return Response('Invalid participant', 400)
+
     if request.method == "POST":
         if request.form['type'] == 'cash':
             return pay_with_cash(
+                actuser,
                 request.form['name'],
                 request.form['price']
                 )
         elif request.form['type'] == 'credit':
             return pay_with_stripe(
+                actuser,
                 request.form['name'],
                 request.form['price'],
                 request.form['token']
@@ -62,7 +74,7 @@ def pay():
     else:
         return Response('Invalid payment method', 400)
 
-def pay_with_stripe(name, req_price, stripe_token):
+def pay_with_stripe(actuser, name, req_price, stripe_token):
     stripe.api_key = "sk_test_key"
 
     if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
@@ -86,15 +98,23 @@ def pay_with_stripe(name, req_price, stripe_token):
             return Response("Sorry, an error ocurred. Please try again in a bit.", 500)
 
         if charge.paid:
+            actuser.name = name
+            actuser.paid = true
+            try:
+                db_session.commit()
+            except:
+                return Response('Paid, but encountered an error. Please contact 5k@csh.rit.edu.', 500)
 
-            # update db
-
-            return Response('Paid', 200)
+            return Response('Registered and paid', 200)
         else:
             return Response('Payment failed', 400)
 
-def pay_with_cash(name, price):
+def pay_with_cash(actuser, name, price):
 
-    # update db
+    actuser.name = name
+    try:
+        db_session.commit()
+    except:
+        return Response('Sorry, we encountered an error. Please contact 5k@csh.rit.edu or try again later.', 500)
 
-    return Response('Paid', 200)
+    return Response('Registered, but not paid (cash chosen)', 200)
