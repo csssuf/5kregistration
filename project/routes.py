@@ -1,4 +1,5 @@
 from project import app
+from flask import redirect
 from project.views import core, register
 
 def add_url_routes(routes_tuple):
@@ -11,5 +12,6 @@ add_url_routes((
     ('/register/', register.reg),
     ('/verify/', register.verify),
     ('/billing/<int:uid>/', register.billing),
+    ('/billing/', lambda : redirect('/')),
     ('/pay/<int:uid>/', register.pay)
 ))
