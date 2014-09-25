@@ -29,7 +29,7 @@
     </div><!-- /.container-fluid -->
   </nav>
 </div>
-<div class="jumbotron" style="padding-top: 15%;" id="register">
+<div class="jumbotron" style="padding-top: 10%;" id="register">
   <h1>Just a Few More Steps!</h1>
   <noscript>
     <div class="row">
@@ -39,12 +39,20 @@
     </div>
   </noscript>
   <form action="/charge" method="post">
-    <p class="lead">I would like to pay with:</p>
-    <p class="checkout-buttons">
-      <button class="cust-btn btn-billing" type="submit" name="type" value="cash"   role="button" style="text-transform: none; text-decoration:none; color:#FFF;">Cash</button>
-      <button class="cust-btn btn-billing" type="submit" name="type" value="credit" role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled="disabled">Credit</button>
-    </p>
-    <input type="hidden" name="name" value="Stuart Olivera">
+    <div class="row">
+      <div class="form-group col-sm-6 col-sm-offset-3" style="margin-top: 1.5em; margin-bottom: 2.5em">
+        <input type="text" name="name" value="" class="form-control" placeholder="Enter your name..." autofocus>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <p class="lead">I would like to pay with:</p>
+        <p class="checkout-buttons">
+          <button class="cust-btn btn-billing" type="submit" name="type" value="cash"   role="button" style="text-transform: none; text-decoration:none; color:#FFF;">Cash</button>
+          <button class="cust-btn btn-billing" type="submit" name="type" value="credit" role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled="disabled">Credit</button>
+        </p>
+      </div>
+    </div>
     <input type="hidden" name="amount" value="1000">
   </form>
   <div id="flash-message" class="alert col-xs-8 col-xs-offset-2" style="display: none"></div>
