@@ -3,17 +3,19 @@
 
 <div class="container">
   {% include "_navigation.html" %}
-<a name="home"></a>
+
+  <a name="home"></a>
   <div class="jumbotron">
     <h1>Welcome Message</h1>
     <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
     <p><a class="cust-btn btn-prereg" href="#register" role="button" style="text-transform: none; text-decoration:none; color:#FFF">Pre-Register Today!</a></p>
   </div>
-<a name="about"></a>
-  <div class="row marketing">
-  <div class="page-header">
 
-  <h1 class="custom-header"  style="color:#FFF">What is it?</h1></div>
+  <a name="about"></a>
+  <div class="row marketing">
+    <div class="page-header">
+      <h1 class="custom-header"  style="color:#FFF">What is it?</h1>
+    </div>
     <div class="col-lg-6"  style="color:#FFF">
       <h4>Subheading</h4>
       <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
@@ -37,20 +39,23 @@
     </div>
   </div>
 
-  <a name="register"></a><div class="jumbotron" style="background-color:#996633; color: #FF9900;">
-
+  <a name="register"></a>
+  <div class="jumbotron" style="background-color:#996633; color: #FF9900;">
     <h1>Pre-Register Today!</h1>
     <p class="lead">Enter your email address to register</p>
-<form action="/register/" method="POST">
-    <input name="email" type="text" id="email" class="form-control" placeholder="Email">
- <input type="submit" name="submit" value="Register" id="submit" class="submit-button">
- </form>
+    <form action="/register/" method="POST">
+      <input name="email" type="text" id="email" class="form-control" placeholder="Email">
+      <input type="submit" name="submit" value="Register" id="submit" class="submit-button">
+    </form>
   </div>
-<a name="course"></a> <div id="map-canvas" class="map"></div>
+
+  <a name="course"></a>
+  <div id="map-canvas" class="map"></div>
+
   <div class="footer">
     <p>&copy; CSH 2014. Designed by Brandon Hudson, James Forcier, Stuart Olivera, Jordan Rodgers.</p>
   </div>
 
-</div> <!-- /container -->
+</div>
 
 {% endblock %}/

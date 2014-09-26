@@ -3,19 +3,17 @@
 {% block body %}
 
 <div class="container">
-  {% include "_navigation.html" %}
-<a name="home"></a>
-  <div class="jumbotron" style=" padding-top:15%;">
-    <h1>Thank You for Registering!</h1>
-    <p class="lead">You're almost there! Please verify your email address to continue. <br>Didn't recieve the verification email?
-    <p><a class="cust-btn btn-prereg" href="#resend" role="button" style="text-transform: none; text-decoration:none; color:#FFF">Re-send Verification</a></p>
-  </div>
-<a name="about"></a>
+  {% include "_navigation-simple.html" %}
+</div>
 
-  <div class="footer-custom">
-    <p>&copy; CSH 2014. Designed by Brandon Hudson, James Forcier, Stuart Olivera, Jordan Rodgers.</p>
-  </div>
+<div class="jumbotron" style=" padding-top:15%;">
+  <h1>Thank You for Registering!</h1>
+  <p class="lead">You're almost there! Please verify your email address to continue. <br>Didn't recieve the verification email?
+  <p><a class="cust-btn btn-prereg" href="#resend" role="button" style="text-transform: none; text-decoration:none; color:#FFF">Re-send Verification</a></p>
+</div>
 
-</div> <!-- /container -->
+<div class="footer-custom">
+  <p>&copy; CSH 2014. Designed by Brandon Hudson, James Forcier, Stuart Olivera, Jordan Rodgers.</p>
+</div>
 
 {% endblock %}
