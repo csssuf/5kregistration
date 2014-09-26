@@ -4,8 +4,11 @@
   $('form button[disabled], form input').prop('disabled', false);
 
   var price = $('form input[name="amount"]').val();
+  window.paymentProcessing = false;
 
   var processPayment = function(type, token) {
+    window.paymentProcessing = true;
+
     var name = $('form input[name=name]').val();
     var price = $('form input[name=amount]').val();
     var uid, paths = window.location.pathname.split('/');
@@ -23,6 +26,9 @@
         setProcessing(false);
         message = response && response.responseText.length < 250 ? response.responseText : "Our appologies, an error ocurred. Please contact <a href='mailto:5k@csh.rit.edu'>5k@csh.rit.edu</a>.";
         flash(message, "danger");
+      })
+      .always(function() {
+        window.paymentProcessing = false;
       });
   };
 
@@ -44,6 +50,8 @@
       processPayment("credit", token);
     },
     closed: function() {
+      if (window.paymentProcessing)
+        return;
       $('.checkout-buttons button').attr('disabled', false);
       $('.checkout-buttons').stop().fadeTo(100, 1);
       flash("", "");
@@ -61,7 +69,6 @@
   });
 
   $('button[name=type][value=cash]').on('click', function(e) {
-    setProcessing(true);
     processPayment("cash", {});
     e.preventDefault();
   });
