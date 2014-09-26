@@ -42,19 +42,11 @@ def verify():
     return render_template("verify.html")
 
 def billing(uid):
-
-    actuser = RegisteredUser.query.filter(RegisteredUser.id == uid).first()
-    if not actuser:
-        flash('Invalid participant', 'danger')
-
+    actuser = get_current_user(uid)
     return render_template("billing.html", email=actuser.email)
 
 def pay(uid):
-
-    actuser = RegisteredUser.query.filter(RegisteredUser.id == uid).first()
-    if not actuser:
-        return Response('Invalid participant', 400)
-
+    actuser = get_current_user(uid)
     if request.method == "POST":
         if request.form['type'] == 'cash':
             return pay_with_cash(
@@ -117,7 +109,6 @@ def pay_with_stripe(actuser, name, req_price, stripe_token):
             return Response('Payment failed', 400)
 
 def pay_with_cash(actuser, name, price):
-
     actuser.name = name
     try:
         db_session.commit()
@@ -125,3 +116,15 @@ def pay_with_cash(actuser, name, price):
         return Response('Sorry, we encountered an error. Please contact 5k@csh.rit.edu or try again later.', 500)
 
     return Response('Registered, but not paid (cash chosen)', 200)
+
+def get_current_user(uid):
+    debug = True
+    if debug:
+        actuser       = RegisteredUser()
+        actuser.id    = uid
+        actuser.email = "test@example.com"
+    else:
+        actuser = RegisteredUser.query.filter(RegisteredUser.id == uid).first()
+        if not actuser:
+            flash('Invalid participant', 'danger')
+    return actuser
