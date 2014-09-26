@@ -21,7 +21,7 @@
       })
       .fail(function(response) {
         setProcessing(false);
-        message = response ? response.responseText : "Sorry, an error ocurred. Please try again.";
+        message = response && response.responseText.length < 250 ? response.responseText : "Our appologies, an error ocurred. Please contact <a href='mailto:5k@csh.rit.edu'>5k@csh.rit.edu</a>.";
         flash(message, "danger");
       });
   };
