@@ -82,6 +82,11 @@ def pay_with_stripe(actuser, name, req_price, stripe_token):
     else:
         price = 1000
 
+    metadata = {
+        "uid": actuser.id,
+        "name": actuser.name,
+    }
+
     if price != int(req_price):
         return Response('Incorrect price requested. Expected %d, got %d' %(price, int(req_price)), 400)
     else:
@@ -90,7 +95,9 @@ def pay_with_stripe(actuser, name, req_price, stripe_token):
               amount=price,
               currency="usd",
               card=stripe_token,
-              description="Registration fee for CSH Costume 5K"
+              description="Registration fee for CSH Costume 5K",
+              receipt_email=actuser.email,
+              metadata=metadata
             )
         except stripe.CardError as e:
             return Response(e.message + " Please try again.", 400)
