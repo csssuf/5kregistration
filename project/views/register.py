@@ -99,7 +99,7 @@ def pay_with_stripe(actuser, name, req_price, stripe_token):
 
         if charge.paid:
             actuser.name = name
-            actuser.paid = true
+            actuser.paid = True
             try:
                 db_session.commit()
             except:
