@@ -1,10 +1,17 @@
 (function () {
 
   $('form').css('opacity', 1);
-  $('form button[disabled], form input').prop('disabled', false);
-
+  $('form input').prop('disabled', false);
   var price = $('form input[name="amount"]').val();
   window.paymentProcessing = false;
+
+  $('form input[name=name]').on('keyup, input', function() {
+    var toggle = $(this).val().length > 0;
+    if (toggle ^ $('form button[disabled]').first().is(':disabled'))
+      return;
+    $('form button').prop('disabled', !toggle);
+    $('.pay-method').stop().fadeTo(250, toggle * 0.75 + 0.25);
+  });
 
   var processPayment = function(type, token) {
     window.paymentProcessing = true;
@@ -12,8 +19,10 @@
     var name = $('form input[name=name]').val();
     var price = $('form input[name=amount]').val();
     var uid, paths = window.location.pathname.split('/');
+
     if (paths.length == 4)
       uid = paths[2];
+
     $.post( $('form').attr('action') + uid + "/", { type: type, name: name, price: price, token: token.id })
       .done(function() {
         flash("", "");
@@ -33,7 +42,7 @@
   };
 
   var setProcessing = function(status) {
-    $('.checkout-buttons button').attr('disabled', status);
+    $('.checkout-buttons button').prop('disabled', status);
     if (status) {
       $('.checkout-buttons').stop().fadeTo(100, 0.5);
       flash("<i class='fa fa-circle-o-notch fa-spin'></i>&nbsp;&nbsp;Processing, please wait...", "info");
