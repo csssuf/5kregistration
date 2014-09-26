@@ -63,7 +63,9 @@
     stripe.open({
       name: 'CSH Costume 5K',
       description: 'Registration ($' + price / 100 + '.00)',
-      amount: price
+      amount: price,
+      email: $('form input[name=email]').val(),
+      allowRememberMe: false
     });
     e.preventDefault();
   });

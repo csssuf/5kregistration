@@ -47,7 +47,7 @@ def billing(uid):
     if not actuser:
         flash('Invalid participant', 'danger')
 
-    return render_template("billing.html")
+    return render_template("billing.html", email=actuser.email)
 
 def pay(uid):
 
