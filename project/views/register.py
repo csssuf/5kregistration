@@ -11,7 +11,7 @@ def reg():
     if request.method == "POST":
         if RegisteredUser.query.filter(RegisteredUser.email ==
                 request.form["email"]).first() != None:
-            flash("Error: that email is already registered.")
+            flash("Error: that email is already registered.", "danger")
             return redirect('/')
         reguuid = uuid.uuid1()
         mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for Charity: Water!
@@ -24,7 +24,7 @@ To confirm your email address, please click here: http://5k.csh.rit.edu/verify?k
                 date=datetime.datetime.now(), reg_uuid = reguuid)
         db_session.add(newuser)
         db_session.commit()
-        flash("Successfully registered.")
+        flash("Successfully registered.", "success")
         return redirect('/')
 
 def verify():
@@ -34,19 +34,36 @@ def verify():
     if not actuser:
         return redirect('/')
     if actuser.paid:
+        flash("You have already paid.", "success")
         return redirect('/')
     if actuser.reg_uuid == request.args["key"]:
         actuser.emailverified = True
         db_session.commit()
-        return redirect('/payment/')
+        return redirect('/billing/')
     return render_template("verify.html")
 
 def billing(uid):
     actuser = get_current_user(uid)
+    if not actuser:
+        return redirect('/')
+    elif not actuser.emailverified:
+        flash("Please verify your email.", "danger")
+        return redirect('/verify/')
+    elif actuser.paid:
+        flash("You have already paid.", "success")
+        return redirect('/')
     return render_template("billing.html", email=actuser.email)
 
 def pay(uid):
     actuser = get_current_user(uid)
+    if not actuser:
+        return redirect('/')
+    elif not actuser.emailverified:
+        flash("Please verify your email.", "danger")
+        return redirect('/verify/')
+    elif actuser.paid:
+        flash("You have already paid.", "success")
+        return redirect('/')
     if request.method == "POST":
         if request.form['type'] == 'cash':
             return pay_with_cash(
