@@ -5,13 +5,15 @@ class RegisteredUser(Base):
     __tablename__ = 'registeredusers'
     id = Column(Integer, primary_key = True)
     date = Column(DateTime)
+    name = Column(String(70))
     email = Column(String(254))
     emailverified = Column(Boolean)
     paid = Column(Boolean)
     reg_uuid = Column(String(37))
 
-    def __init__(self, date=None, email=None, paid=False, reg_uuid=None, verified=False):
+    def __init__(self, date=None, name=None, email=None, paid=False, reg_uuid=None, verified=False):
         self.date = date
+        self.name = name
         self.email = email
         self.paid = paid
         self.reg_uuid = reg_uuid
