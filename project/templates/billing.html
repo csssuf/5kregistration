@@ -34,22 +34,22 @@
   <noscript>
     <div class="row">
       <div class="alert alert-danger col-xs-6 col-xs-offset-3">
-        <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;JavaScript is required to pay with credit.</p>
+        <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;JavaScript is required to complete registration. Please <a href="http://www.enable-javascript.com/" target="_blank">enable javascript</a> to continue.</p>
       </div>
     </div>
   </noscript>
-  <form action="/charge" method="post">
+  <form action="/pay/" method="post" style="opacity: 0.3" disabled>
     <div class="row">
       <div class="form-group col-sm-6 col-sm-offset-3" style="margin-top: 1.5em; margin-bottom: 2.5em">
-        <input type="text" name="name" value="" class="form-control" placeholder="Enter your name..." autofocus>
+        <input type="text" name="name" value="" class="form-control" placeholder="Enter your name..." autofocus disabled>
       </div>
     </div>
     <div class="row">
       <div class="form-group">
         <p class="lead">I would like to pay with:</p>
         <p class="checkout-buttons">
-          <button class="cust-btn btn-billing" type="submit" name="type" value="cash"   role="button" style="text-transform: none; text-decoration:none; color:#FFF;">Cash</button>
-          <button class="cust-btn btn-billing" type="submit" name="type" value="credit" role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled="disabled">Credit</button>
+          <button class="cust-btn btn-billing" type="submit" name="type" value="cash"   role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled>Cash</button>
+          <button class="cust-btn btn-billing" type="submit" name="type" value="credit" role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled>Credit</button>
         </p>
       </div>
     </div>

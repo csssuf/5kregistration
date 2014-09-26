@@ -1,6 +1,7 @@
 (function () {
 
-  $('form button[disabled]').prop('disabled', false);
+  $('form').css('opacity', 1);
+  $('form button[disabled], form input').prop('disabled', false);
 
   var price = $('form input[name="amount"]').val();
 
@@ -10,7 +11,7 @@
     var uid, paths = window.location.pathname.split('/');
     if (paths.length == 4)
       uid = paths[2];
-    $.post( "/pay/" + uid + "/", { type: type, name: name, price: price, token: token.id })
+    $.post( $('form').attr('action') + uid + "/", { type: type, name: name, price: price, token: token.id })
       .done(function() {
         flash("", "");
         $('#register').slideUp(500);
