@@ -4,25 +4,6 @@
 
   var price = $('form input[name="amount"]').val();
 
-  // TODO: move into common.js
-
-  var flash = function(message, type) {
-    var element = $('#flash-message');
-
-    if (message === '') {
-      element.hide();
-      return;
-    }
-
-    element.removeClass(function(index, css) {
-        return (css.match (/(^|\s)alert-\S+/g) || []).join(' ');
-    });
-    element.addClass("alert-" + type);
-
-    element.html(message);
-    element.fadeIn(125);
-  };
-
   var processPayment = function(type, token) {
     var name = $('form input[name=name]').val();
     var price = $('form input[name=amount]').val();
