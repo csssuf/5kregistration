@@ -140,6 +140,7 @@ def get_current_user(uid):
         actuser       = RegisteredUser()
         actuser.id    = uid
         actuser.email = "test@example.com"
+        actuser.emailverified = True
     else:
         actuser = RegisteredUser.query.filter(RegisteredUser.id == uid).first()
         if not actuser:
