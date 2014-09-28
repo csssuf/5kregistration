@@ -21,3 +21,17 @@ class RegisteredUser(Base):
 
     def __repr__(self):
         return "<RegisteredUser %s (id %d)>" % (self.email, self.id)
+
+class Admin(Base):
+    __tablename__ = 'admins'
+    username = Column(String(16))
+    pwhash = Column(String(128))
+    superadmin = Column(Boolean)
+
+    def __init__(self, uname=None, pwhash=None, superadmin=False):
+        self.username = uname
+        self.pwhash = pwhash
+        self.superadmin = superadmin
+
+    def __repr__(self):
+        return "<Admin %s (superadmin = %b)>" % (self.username, self.superadmin)
