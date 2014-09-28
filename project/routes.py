@@ -16,5 +16,5 @@ add_url_routes((
     ('/pay/<int:uid>/', register.pay),
     ('/admin/listusers/', admin.listusers),
     ('/admin/login/', admin.login),
-    ('/admin/login/login/', admin.login_form)
+    ('/admin/login/login/', admin.login_submit)
 ))

@@ -1,1 +1,1 @@
-from projec.utils import admin
+from project.utils import auth
