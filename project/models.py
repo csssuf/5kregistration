@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Boolean, Integer, DateTime
+from sqlalchemy import Column, String, Boolean, Integer, DateTime, Enum
 from project.database import Base
 
 class RegisteredUser(Base):
@@ -10,14 +10,16 @@ class RegisteredUser(Base):
     emailverified = Column(Boolean)
     paid = Column(Boolean)
     reg_uuid = Column(String(37))
+    racetype = Column(Enum('5k', 'funrun'))
 
-    def __init__(self, date=None, name=None, email=None, paid=False, reg_uuid=None, verified=False):
+    def __init__(self, date=None, name=None, email=None, paid=False, reg_uuid=None, verified=False, rtype='5k'):
         self.date = date
         self.name = name
         self.email = email
         self.paid = paid
         self.reg_uuid = reg_uuid
         self.emailverified = verified
+        self.racetype = rtype
 
     def __repr__(self):
         return "<RegisteredUser %s (id %d)>" % (self.email, self.id)
