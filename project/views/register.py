@@ -43,7 +43,7 @@ def verify():
     if actuser.reg_uuid == request.args["key"]:
         actuser.emailverified = True
         db_session.commit()
-        return redirect('/billing/')
+        return redirect('/billing/%d/' % actuser.id)
     return render_template("verify.html")
 
 def billing(uid):
