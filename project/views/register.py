@@ -25,7 +25,7 @@ To confirm your email address, please click here: http://5k.csh.rit.edu/verify?k
             flash("An error occurred sending you an email. Please try again or contact 5k@csh.rit.edu.", "danger")
             return redirect('/')
         newuser = RegisteredUser(email=request.form["email"],
-                date=datetime.datetime.now(), reg_uuid = reguuid)
+                date=datetime.datetime.now(), reg_uuid = str(reguuid))
         db_session.add(newuser)
         db_session.commit()
         flash("Successfully registered.", "success")
