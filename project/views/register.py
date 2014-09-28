@@ -87,21 +87,21 @@ def pay(uid):
     else:
         return Response('Invalid payment method', 400)
 
-def pay_with_stripe(actuser, name, req_price, stripe_token):
+def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
     stripe.api_key = "sk_test_key"
 
     if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
-        price = 1500
+        min_price = 1500
     else:
-        price = 1000
+        min_price = 1000
 
     metadata = {
         "uid": actuser.id,
-        "name": actuser.name,
+        "name": actuser.name
     }
 
-    if price != int(req_price):
-        return Response('Incorrect price requested. Expected %d, got %d' %(price, int(req_price)), 400)
+    if min_price > int(price):
+        return Response('Incorrect price requested. Expected >=%d, got %d' %(min_price, int(price)), 400)
     else:
         try:
             charge = stripe.Charge.create(

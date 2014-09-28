@@ -94,6 +94,7 @@ form-control:-ms-input-placeholder {
   text-align: right;
   margin-right: 33px;
   top: 0.4em !important;
+  color: #028F05;
 }
 
 .visible-active {

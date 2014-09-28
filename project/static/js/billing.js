@@ -1,7 +1,6 @@
 (function () {
 
   $('form').css('opacity', 1);
-  var price = $('form input[name="amount"]').val();
   window.paymentProcessing = false;
 
   $("form input[name=phone]").mask("(999) 999-9999");
@@ -18,7 +17,7 @@
     window.paymentProcessing = true;
 
     var name = $('form input[name=name]').val();
-    var price = parseInt($('form input[name=amount]').val()) * 100;
+    var price      = parseFloat($('form input[name=amount]').val()) * 100;
     var uid, paths = window.location.pathname.split('/');
 
     if (paths.length == 4)
@@ -69,6 +68,7 @@
   });
 
   $('button[name=type][value=credit]').on('click', function(e) {
+    var price = parseFloat($('form input[name=amount]').val()) * 100;
     setProcessing(true);
     stripe.open({
       name: 'CSH Costume 5K',
@@ -86,12 +86,11 @@
   });
 
   $("form.billing input[name=amount]").on('keyup', function(e) {
-    var thankyou = $(this).parents('.form-group').find('.donation-thank-you')
-    console.log($(this).parents('.form-group').find('.donation-thank-you'));
-    if (parseInt($(this).val()) > parseInt($(this).data('value-min')))
-      thankyou.show();
+    var thankyou = $(this).parents('.form-group').find('.donation-thank-you');
+    if (parseFloat($(this).val()) > parseFloat($(this).data('value-min')))
+      thankyou.fadeIn(300);
     else
-      thankyou.hide();
+      thankyou.fadeOut(200);
   });
 
   $("form.billing").bootstrapValidator({
@@ -157,13 +156,14 @@
         }
       },
       amount: {
+        trigger: "blur keyup",
         validators: {
           notEmpty: {
             message: "A minimum donation of $" + $('form input[name=amount]').data('value-min') + " is required"
           },
           greaterThan: {
             inclusive: true,
-            value: parseInt($('form input[name=amount]').data('value-min')),
+            value: parseFloat($('form input[name=amount]').data('value-min')),
             message: "A minimum donation of $" + $('form input[name=amount]').data('value-min') + " is required"
           }
         }
