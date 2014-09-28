@@ -1,11 +1,13 @@
 from flask import render_template, request, session, flash
 from project.utils.auth import admin_login_required
-from project.models import Admin
+from project.models import Admin, RegisteredUser
+from project.database import db_session
 import hashlib
 
 @admin_login_required
 def listusers():
-    return render_template("admin_listusers.html")
+    return render_template("admin_listusers.html",
+            users=db_session.query(RegisteredUser).order_by(RegisteredUser.id))
 
 def login():
     return render_template("admin_login.html")
