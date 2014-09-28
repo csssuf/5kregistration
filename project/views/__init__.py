@@ -1,4 +1,4 @@
 from project.views import (
-        core, register
+        core, register, admin
 )
 from project import app

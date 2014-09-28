@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Email</td>
+			<td>Name</td>
+			<td>Paid?</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for user in users %}
+		<tr class="{% if user.paid %}success{% elif not user.emailverified %}danger{% else %}warning{% endif %}">
+			<td>{{ user.id }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.name }}</td>
+			<td>{{ user.paid }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
