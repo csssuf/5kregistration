@@ -24,6 +24,7 @@ class RegisteredUser(Base):
 
 class Admin(Base):
     __tablename__ = 'admins'
+    id = Column(Integer, primary_key = True)
     username = Column(String(16))
     pwhash = Column(String(128))
     superadmin = Column(Boolean)
