@@ -1,9 +1,11 @@
 (function () {
 
   $('form').css('opacity', 1);
-  $('form input').prop('disabled', false);
+  $('form button').prop('disabled', false);
   var price = $('form input[name="amount"]').val();
   window.paymentProcessing = false;
+
+  $("form input[name=phone]").mask("(999) 999-9999");
 
   $('form input[name=name]').on('keyup, input', function() {
     var toggle = $(this).val().length > 0;
@@ -17,7 +19,7 @@
     window.paymentProcessing = true;
 
     var name = $('form input[name=name]').val();
-    var price = $('form input[name=amount]').val();
+    var price = parseInt($('form input[name=amount]').val()) * 100;
     var uid, paths = window.location.pathname.split('/');
 
     if (paths.length == 4)
@@ -82,6 +84,63 @@
   $('button[name=type][value=cash]').on('click', function(e) {
     processPayment("cash", {});
     e.preventDefault();
+  });
+
+  $("form.billing").bootstrapValidator({
+    excluded: [':disabled', ':hidden', ':not(:visible)'],
+    message: false,
+    trigger: "blur",
+    submitButtons: 'button[type="submit"]',
+    feedbackIcons: {
+      valid: "fa fa-check",
+      invalid: "fa fa-remove",
+      validating: "fa fa-refresh fa-spin"
+    },
+    submitHandler: function(validator, form, submitButton) {
+      var data, fail, message, success;
+      form.find("#submitMessage").hide();
+      message = function(message, bg, icon) {
+        var messageBox;
+        messageBox = form.find("#submitMessage");
+        if (messageBox === void 0) {
+          return;
+        }
+        messageBox.find('span').text(message);
+        messageBox.attr("class", "bg-" + bg);
+        messageBox.find('i').attr("class", "fa fa-" + icon);
+        return messageBox.show();
+      };
+      success = function() {
+        validator.resetForm(true);
+        validator.disableSubmitButtons(true);
+        return message("Thank you! We will contact you within 24 hours.", "success", "check");
+      };
+      fail = function() {
+        return message("Our appologies, the request could not be submitted. Please contact us through the information provided at the top, or try again later.", "danger", "exclamation-triangle");
+      };
+      data = form.serializeObject();
+      data.username = "I can explain";
+      return $.post(form.attr("action"), data).done(function(result) {
+        if (result === "success") {
+          return success();
+        }
+        return fail();
+      }).fail(function() {
+        return fail();
+      });
+    },
+    fields: {
+      name: {
+        validators: {
+          notEmpty: true
+        }
+      },
+      phone: {
+        validators: {
+          phone: true
+        }
+      }
+    }
   });
 
 })();

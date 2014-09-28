@@ -1775,12 +1775,12 @@ output {
 }
 }
 .form-control {
-    font-size: 1.5em;
+  font-size: 1.2em;
 	font-family: 'Open Sans', sans-serif;
 	color: #FFA319;
-	width: 70%;
+  width: 100%;
 	display: block-inline;
-	padding: 0.5em 0.5em;
+	padding: 0.5em 0.7em;
 	border:2px solid #FFF;
 	outline: none;
 	text-align: left;
@@ -2280,65 +2280,6 @@ fieldset[disabled] .btn-primary.active {
 .btn-primary .badge {
   color: #428bca;
   background-color: #fff;
-}
-.cust-btn{
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  text-decoration: none;
-  text-transform: none;
-  font-weight: normal;
-}
-.btn-prereg {
-   margin-top: 20px;
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 1.5em;
-  background: #FFA319;
-  padding: 20px 40px 20px 40px;
-  text-decoration: none;
-  border:none;
-  -webkit-appearance:none;
-}
-.btn-billing {
-   margin-top: 20px;
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 1.5em;
-  background: #FFA319;
-  padding: 20px 0px 20px 0px;
-  text-decoration: none;
-  border:none;
-  -webkit-appearance:none;
-  width:200px;
-  margin-left:5px;
-  margin-right:5px;
-}
-@media (max-width: 767px){
-	.btn-prereg{
-		font-size: 1em;
-		padding: 10px 20px 10px 20px;
-
-	}
-	.btn-billing{
-		font-size: 1em;
-		padding: 10px 0px 10px 0px;
-		width:100px
-
-	}
 }
 .btn-success {
   color: #fff;

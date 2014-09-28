@@ -15,23 +15,52 @@
       </div>
     </div>
   </noscript>
-  <form action="/pay/" method="post" style="opacity: 0.3" disabled>
-    <div class="row">
-      <div class="form-group col-sm-6 col-sm-offset-3" style="margin-top: 1.5em; margin-bottom: 2.5em">
-        <input type="text" name="name" value="" class="form-control" placeholder="Enter your name..." autofocus disabled>
-      </div>
-    </div>
-    <div class="row pay-method" style="opacity: 0.55">
+  <form action="/pay/" method="post" class="form-horizontal billing" style="opacity: 0.3">
+    <div class="col-sm-8 col-sm-offset-2">
       <div class="form-group">
-        <p class="lead">I would like to pay with:</p>
-        <p class="checkout-buttons">
-          <button class="cust-btn btn-billing" type="submit" name="type" value="cash"   role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled>Cash</button>
-          <button class="cust-btn btn-billing" type="submit" name="type" value="credit" role="button" style="text-transform: none; text-decoration:none; color:#FFF;" disabled>Credit</button>
-        </p>
+        <label for="name" class="col-sm-3 control-label">Full Name</label>
+        <div class="col-sm-9">
+          <input type="text" name="name" value="" class="form-control" placeholder="Enter your name..." autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name" class="col-sm-3 control-label">Phone Number</label>
+        <div class="col-sm-9">
+          <input type="text" name="phone" value="" class="form-control" placeholder="(___) ___-____">
+          <span class="help-block">Required for public safety</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name" class="col-sm-3 control-label">Donation Amount</label>
+        <div class="col-sm-9">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" name="amount" value="10" class="form-control" placeholder="10">
+          </div>
+          <span class="help-block">All proceeds go to Charity: Water</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name" class="col-sm-3 control-label">Race Selection</label>
+        <div class="col-sm-9">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary btn-lg active">
+              <input type="radio" name="inlineRadioOptions" value="5k" checked><i class="fa fa-check visible-active"></i> 5K Run
+            </label>
+            <label class="btn btn-primary btn-lg">
+              <input type="radio" name="inlineRadioOptions" value="funrun"><i class="fa fa-check visible-active"></i> Fun Run
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+          <button class="btn-billing btn btn-lg" type="button" name="type" value="cash"   role="button" disabled>Pay with Cash</button>
+          <button class="btn-billing  btn btn-lg" type="button" name="type" value="credit" role="button" disabled>Pay with Credit/Debit</button>
+        </div>
       </div>
     </div>
     <input type="hidden" name="email" value="{{ email }}">
-    <input type="hidden" name="amount" value="1000">
   </form>
   <div id="flash-message" class="alert col-xs-8 col-xs-offset-2" style="display: none"></div>
 </div>
@@ -51,5 +80,7 @@
 {% endblock %}
 {% block javascripts %}
   <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script src="/static/js/jquery.maskedinput.min.js"></script>
+  <script src="/static/js/bootstrapValidator.min.js"></script>
   <script src="/static/js/billing.js"></script>
 {% endblock %}

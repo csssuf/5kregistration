@@ -1,0 +1,134 @@
+.form-control {
+  border: 2px solid #FFA319;
+}
+
+.input-group-addon {
+  border: 2px solid #FFA319;
+  background: #F9EFDB;
+}
+
+.jumbotron .form-control.no-border {
+  border-color: transparent;
+}
+
+.jumbotron .form-control.no-border:focus {
+  border-color: #FFA319;
+}
+
+.form-control {
+  color: #555;
+}
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+  transition: color 0.5s ease, border-color 0.5s ease;
+  -webkit-transition: color 0.5s ease, border-color 0.5s ease;
+  -webkit-appearance:none;
+}
+
+form-control:-moz-placeholder {
+   color: #bbb;
+   transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+form-control:-ms-input-placeholder {
+   color: #bbb;
+   transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.form-control:focus, .form-control:focus::-webkit-input-placeholder {
+   color: #FFA319;
+}
+.form-control:focus, .form-control:focus:-moz-placeholder { /* Firefox 18- */
+   color: #FFA319;
+}
+.form-control:focus, .form-control:focus::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFA319;
+}
+.form-control:focus, .form-control:focus:-ms-input-placeholder {
+   color: #FFA319;
+}
+
+.billing .form-group {
+  text-align: left
+}
+
+.billing .btn-group i {
+  margin-right: 0.5em;
+}
+
+.control-label {
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+
+.form-horizontal .has-feedback .form-control-feedback {
+  top: 1em;
+}
+
+/*.billing .input-group, .billing .form-group {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
+*/
+
+.form-full-width .form-control {
+  width: 70%;
+  font-size: 1.5em;
+}
+
+.visible-active {
+  display: none !important;
+}
+
+.active .visible-active {
+  display: inline-block !important;
+}
+
+.cust-btn{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-decoration: none;
+  text-transform: none;
+  font-weight: normal;
+}
+
+.btn-prereg {
+   margin-top: 20px;
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 1.5em;
+  background: #FFA319;
+  padding: 20px 40px 20px 40px;
+  text-decoration: none;
+  border:none;
+  -webkit-appearance:none;
+}
+.btn-billing {
+   /*margin-top: 20px;*/
+  color: #ffffff;
+  background: #FFA319;
+}
+@media (max-width: 767px){
+  .btn-prereg{
+    font-size: 1em;
+    padding: 10px 20px 10px 20px;
+
+  }
+  .btn-billing{
+    font-size: 1em;
+    padding: 10px 0px 10px 0px;
+    width:100px
+
+  }
+}
