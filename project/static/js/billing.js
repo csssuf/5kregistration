@@ -148,7 +148,8 @@
       phone: {
         validators: {
           phone: {
-            message: "Please provide your phone number"
+            message: "Please provide your phone number",
+            country: "US"
           },
           notEmpty: {
             message: "Please provide your phone number"
