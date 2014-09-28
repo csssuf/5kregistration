@@ -1,7 +1,6 @@
 (function () {
 
   $('form').css('opacity', 1);
-  $('form button').prop('disabled', false);
   var price = $('form input[name="amount"]').val();
   window.paymentProcessing = false;
 
@@ -86,11 +85,20 @@
     e.preventDefault();
   });
 
+  $("form.billing input[name=amount]").on('keyup', function(e) {
+    var thankyou = $(this).parents('.form-group').find('.donation-thank-you')
+    console.log($(this).parents('.form-group').find('.donation-thank-you'));
+    if (parseInt($(this).val()) > parseInt($(this).data('value-min')))
+      thankyou.show();
+    else
+      thankyou.hide();
+  });
+
   $("form.billing").bootstrapValidator({
     excluded: [':disabled', ':hidden', ':not(:visible)'],
     message: false,
     trigger: "blur",
-    submitButtons: 'button[type="submit"]',
+    submitButtons: 'button[type="button"]',
     feedbackIcons: {
       valid: "fa fa-check",
       invalid: "fa fa-remove",
@@ -132,12 +140,31 @@
     fields: {
       name: {
         validators: {
-          notEmpty: true
+          notEmpty: {
+            message: "Please provide your full name"
+          }
         }
       },
       phone: {
         validators: {
-          phone: true
+          phone: {
+            message: "Please provide your phone number"
+          },
+          notEmpty: {
+            message: "Please provide your phone number"
+          }
+        }
+      },
+      amount: {
+        validators: {
+          notEmpty: {
+            message: "A minimum donation of $" + $('form input[name=amount]').data('value-min') + " is required"
+          },
+          greaterThan: {
+            inclusive: true,
+            value: parseInt($('form input[name=amount]').data('value-min')),
+            message: "A minimum donation of $" + $('form input[name=amount]').data('value-min') + " is required"
+          }
         }
       }
     }

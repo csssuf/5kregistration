@@ -76,6 +76,26 @@ form-control:-ms-input-placeholder {
   font-size: 1.5em;
 }
 
+.has-success .form-control, .has-success .form-control:focus, .has-success .input-group span {
+  border-color: #FFA319;
+}
+
+.has-success .control-label, .has-success .input-group span, .has-success .help-block {
+  color: inherit;
+}
+
+.has-success .input-group span {
+  background: #F9EFDB;
+}
+
+.donation-thank-you {
+  display: none;
+  width: 140px;
+  text-align: right;
+  margin-right: 33px;
+  top: 0.4em !important;
+}
+
 .visible-active {
   display: none !important;
 }
