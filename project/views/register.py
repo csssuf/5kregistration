@@ -78,7 +78,7 @@ def pay(uid):
         if len(request.form['phone']) < 1:
             errors += "Please provide your phone number.<br>"
 
-        if request.form['racetype'] == '5k' or request.form['racetype'] == 'funrun':
+        if request.form['racetype'] != '5k' and request.form['racetype'] != 'funrun':
             errors += "Please select the type of race.<br>"
 
         if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
