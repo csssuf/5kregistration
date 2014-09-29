@@ -1,4 +1,4 @@
-from flask import render_template, request, session, flash
+from flask import render_template, request, session, flash, redirect
 from project.utils.auth import admin_login_required
 from project.models import Admin, RegisteredUser
 from project.database import db_session
@@ -23,4 +23,4 @@ def login_submit():
             session["admin_id"] = auser.username
             session["superadmin"] = auser.superadmin
 	    return redirect('/admin/listusers/')
-    return render_template("admin_login.html")
+    return redirect('/admin/login/')
