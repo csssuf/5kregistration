@@ -73,6 +73,7 @@ h1.billing-title {
 .form-full-width .form-control {
   width: 70%;
   font-size: 1.5em;
+  text-align: center;
 }
 
 .has-success .form-control, .has-success .form-control:focus, .has-success .input-group span {
@@ -140,6 +141,9 @@ h1.billing-title {
   background: #FFA319;
 }
 @media (max-width: 767px){
+  .form-full-width .form-control {
+    font-size: 1.25em
+  }
   .btn-prereg{
     font-size: 1em;
     padding: 10px 20px 10px 20px;
