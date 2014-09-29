@@ -16,14 +16,16 @@
   var processPayment = function(type, token) {
     window.paymentProcessing = true;
 
-    var name = $('form input[name=name]').val();
+    var name       = $('form input[name=name]').val();
     var price      = parseFloat($('form input[name=amount]').val()) * 100;
+    var phone      = $('form input[name=phone]').val();
+    var racetype   = $('form input[name=racetype]:checked').val();
     var uid, paths = window.location.pathname.split('/');
 
     if (paths.length == 4)
       uid = paths[2];
 
-    $.post( $('form').attr('action') + uid + "/", { type: type, name: name, price: price, token: token.id })
+    $.post( $('form').attr('action') + uid + "/", { type: type, name: name, phone: phone, price: price, racetype: racetype, token: token.id })
       .done(function() {
         flash("", "");
         $('#register').slideUp(500);

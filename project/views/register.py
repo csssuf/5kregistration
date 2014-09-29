@@ -73,12 +73,16 @@ def pay(uid):
             return pay_with_cash(
                 actuser,
                 request.form['name'],
+                request.form['phone'],
+                request.form['racetype'],
                 request.form['price']
                 )
         elif request.form['type'] == 'credit':
             return pay_with_stripe(
                 actuser,
                 request.form['name'],
+                request.form['phone'],
+                request.form['racetype'],
                 request.form['price'],
                 request.form['token']
                 )
@@ -118,8 +122,10 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
             return Response("Sorry, an error ocurred. Please try again in a bit.", 500)
 
         if charge.paid:
-            actuser.name = name
-            actuser.paid = True
+            actuser.name     = name
+            actuser.phone    = ''.join(c for c in phone if c.isdigit())
+            actuser.racetype = racetype
+            actuser.paid     = True
             try:
                 db_session.commit()
             except:
@@ -129,8 +135,10 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
         else:
             return Response('Payment failed', 400)
 
-def pay_with_cash(actuser, name, price):
-    actuser.name = name
+def pay_with_cash(actuser, name, phone, racetype, price):
+    actuser.name     = name
+    actuser.phone    = ''.join(c for c in phone if c.isdigit())
+    actuser.racetype = racetype
     try:
         db_session.commit()
     except:
