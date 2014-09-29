@@ -22,4 +22,5 @@ def login_submit():
             auser = Admin.query.filter(Admin.username == request.form["username"]).first()
             session["admin_id"] = auser.username
             session["superadmin"] = auser.superadmin
+	    return redirect('/admin/listusers/')
     return render_template("admin_login.html")
