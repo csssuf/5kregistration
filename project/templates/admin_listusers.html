@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 	{% for user in users %}
-		<tr class="{% if user.paid %}success{% elif not user.emailverified %}danger{% else %}warning{% endif %}">
+		<tr class="{% if user.paid >= 1000 %}success{% elif not user.emailverified %}danger{% else %}warning{% endif %}">
 			<td>{{ user.id }}</td>
 			<td>{{ user.email }}</td>
 			<td>{{ user.name }}</td>

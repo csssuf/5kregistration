@@ -37,7 +37,7 @@ def verify():
     actuser = RegisteredUser.query.filter(RegisteredUser.email == request.args["user"]).first()
     if not actuser:
         return redirect('/')
-    if actuser.paid:
+    if actuser.paid >= 1000:
         flash("You have already paid.", "success")
         return redirect('/')
     if actuser.reg_uuid == request.args["key"]:
@@ -53,7 +53,7 @@ def billing(uid):
     elif not actuser.emailverified:
         flash("Please verify your email.", "danger")
         return redirect('/verify/')
-    elif actuser.paid:
+    elif actuser.paid >= 1000:
         flash("You have already paid.", "success")
         return redirect('/')
     return render_template("billing.html", email=actuser.email)
@@ -65,7 +65,7 @@ def pay(uid):
     elif not actuser.emailverified:
         flash("Please verify your email.", "danger")
         return redirect('/verify/')
-    elif actuser.paid:
+    elif actuser.paid >= 1000:
         flash("You have already paid.", "success")
         return redirect('/')
     if request.method == "POST":
@@ -125,7 +125,7 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
             actuser.name     = name
             actuser.phone    = ''.join(c for c in phone if c.isdigit())
             actuser.racetype = racetype
-            actuser.paid     = True
+            actuser.paid     = charge.amount
             try:
                 db_session.commit()
             except:

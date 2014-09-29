@@ -8,12 +8,12 @@ class RegisteredUser(Base):
     name = Column(String(70))
     email = Column(String(254))
     emailverified = Column(Boolean)
-    paid = Column(Boolean)
+    paid = Column(Integer)
     reg_uuid = Column(String(37))
     racetype = Column(Enum('5k', 'funrun', name='racetypes'))
     phone = Column(Integer)
 
-    def __init__(self, date=None, name=None, email=None, paid=False, reg_uuid=None, verified=False, rtype='5k'):
+    def __init__(self, date=None, name=None, email=None, paid=-1, reg_uuid=None, verified=False, rtype='5k'):
         self.date = date
         self.name = name
         self.email = email
