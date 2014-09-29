@@ -1,5 +1,5 @@
 from flask import render_template, request, session, flash, redirect
-from project.utils.auth import admin_login_required
+from project.utils.auth import admin_login_required, superadmin_login_required
 from project.models import Admin, RegisteredUser
 from project.database import db_session
 import hashlib
@@ -28,3 +28,22 @@ def login_submit():
 @admin_login_required
 def aindex():
     return redirect('/admin/listusers/') # Fix me after more admin functions are written
+
+@superadmin_login_required
+def superadmin_index():
+    return render_template("admin_superadmin.html")
+
+@superadmin_login_required
+def superadmin_create():
+    if request.method == "POST":
+        if Admin.query.filter(Admin.username == request.form["username"].first()) != None:
+            flash("User already exists.", "danger")
+            return redirect('/admin/superadmin/')
+        nadmin = Admin(uname=request.form["username"],
+                       pwhash=hashlib.sha256(request.form["password"]).hexdigest(),
+                       superadmin=request.form["superadmin"])
+        db_session.add(nadmin)
+        db_session.commit()
+        flash("User successfully created.", "success")
+        return redirect('/admin/superadmin/')
+    return redirect('/admin/superadmin/')

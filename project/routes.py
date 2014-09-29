@@ -17,5 +17,7 @@ add_url_routes((
     ('/admin/', admin.aindex),
     ('/admin/listusers/', admin.listusers),
     ('/admin/login/', admin.login),
-    ('/admin/login/login/', admin.login_submit)
+    ('/admin/login/login/', admin.login_submit),
+    ('/admin/superadmin/', admin.superadmin_index),
+    ('/admin/superadmin/createuser/', admin.superadmin_create)
 ))
