@@ -14,6 +14,7 @@ add_url_routes((
     ('/billing/<int:uid>/', register.billing),
     ('/billing/', lambda : redirect('/')),
     ('/pay/<int:uid>/', register.pay),
+    ('/admin/', admin.index),
     ('/admin/listusers/', admin.listusers),
     ('/admin/login/', admin.login),
     ('/admin/login/login/', admin.login_submit)

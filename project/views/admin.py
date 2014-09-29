@@ -24,3 +24,7 @@ def login_submit():
             session["superadmin"] = auser.superadmin
 	    return redirect('/admin/listusers/')
     return redirect('/admin/login/')
+
+@admin_login_required
+def index():
+    return redirect('/admin/listusers/') # Fix me after more admin functions are written
