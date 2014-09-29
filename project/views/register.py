@@ -6,6 +6,7 @@ import uuid
 import smtplib
 import urllib
 import stripe
+import re
 
 def reg():
     if request.method == "POST":
@@ -69,6 +70,28 @@ def pay(uid):
         flash("You have already paid.", "success")
         return redirect('/')
     if request.method == "POST":
+        errors = ""
+
+        if len(request.form['name']) < 1 or re.search(".{2,}\s+.+", request.form['name']) == None:
+            errors += "Please provide your full name.<br>"
+
+        if len(request.form['phone']) < 1:
+            errors += "Please provide your phone number.<br>"
+
+        if request.form['racetype'] == '5k' or request.form['racetype'] == 'funrun':
+            errors += "Please select the type of race.<br>"
+
+        if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
+            min_price = 1500
+        else:
+            min_price = 1000
+
+        if int(request.form['price']) < min_price:
+            errors += 'A minimum donation of $%d is required.<br>' %(min_price / 100)
+
+        if len(errors) > 0:
+            return Response(errors, 400)
+
         if request.form['type'] == 'cash':
             return pay_with_cash(
                 actuser,
@@ -94,46 +117,38 @@ def pay(uid):
 def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
     stripe.api_key = "sk_test_key"
 
-    if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
-        min_price = 1500
-    else:
-        min_price = 1000
-
     metadata = {
         "uid": actuser.id,
         "name": actuser.name
     }
 
-    if min_price > int(price):
-        return Response('Incorrect price requested. Expected >=%d, got %d' %(min_price, int(price)), 400)
-    else:
+    try:
+        charge = stripe.Charge.create(
+          amount=price,
+          currency="usd",
+          card=stripe_token,
+          description="Registration fee for CSH Costume 5K",
+          receipt_email=actuser.email,
+          metadata=metadata
+        )
+    except stripe.CardError as e:
+        return Response(e.message + " Please try again.", 400)
+    except (stripe.InvalidRequestError, stripe.AuthenticationError, stripe.APIConnectionError, stripe.StripeError) as e:
+        return Response("Sorry, an error ocurred. Please try again in a bit.", 500)
+
+    if charge.paid:
+        actuser.name     = name
+        actuser.phone    = ''.join(c for c in phone if c.isdigit())
+        actuser.racetype = racetype
+        actuser.paid     = True
         try:
-            charge = stripe.Charge.create(
-              amount=price,
-              currency="usd",
-              card=stripe_token,
-              description="Registration fee for CSH Costume 5K",
-              receipt_email=actuser.email,
-              metadata=metadata
-            )
-        except stripe.CardError as e:
-            return Response(e.message + " Please try again.", 400)
-        except (stripe.InvalidRequestError, stripe.AuthenticationError, stripe.APIConnectionError, stripe.StripeError) as e:
-            return Response("Sorry, an error ocurred. Please try again in a bit.", 500)
+            db_session.commit()
+        except:
+            return Response('Paid, but encountered an error. Please contact 5k@csh.rit.edu.', 500)
 
-        if charge.paid:
-            actuser.name     = name
-            actuser.phone    = ''.join(c for c in phone if c.isdigit())
-            actuser.racetype = racetype
-            actuser.paid     = charge.amount
-            try:
-                db_session.commit()
-            except:
-                return Response('Paid, but encountered an error. Please contact 5k@csh.rit.edu.', 500)
-
-            return Response('Registered and paid', 200)
-        else:
-            return Response('Payment failed', 400)
+        return Response('Registered and paid', 200)
+    else:
+        return Response('Payment failed', 400)
 
 def pay_with_cash(actuser, name, phone, racetype, price):
     actuser.name     = name
