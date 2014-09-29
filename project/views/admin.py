@@ -26,5 +26,5 @@ def login_submit():
     return redirect('/admin/login/')
 
 @admin_login_required
-def index():
+def aindex():
     return redirect('/admin/listusers/') # Fix me after more admin functions are written
