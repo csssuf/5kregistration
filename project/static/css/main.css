@@ -48,6 +48,11 @@ form-control:-ms-input-placeholder {
    color: #FFA319;
 }
 
+h1.billing-title {
+  margin-bottom: 0.7em;
+  font-size: 4em;
+}
+
 .billing .form-group {
   text-align: left
 }
@@ -64,12 +69,6 @@ form-control:-ms-input-placeholder {
 .form-horizontal .has-feedback .form-control-feedback {
   top: 1em;
 }
-
-/*.billing .input-group, .billing .form-group {
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
-}
-*/
 
 .form-full-width .form-control {
   width: 70%;
