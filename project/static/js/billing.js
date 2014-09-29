@@ -28,7 +28,8 @@
     $.post( $('form').attr('action') + uid + "/", { type: type, name: name, phone: phone, price: price, racetype: racetype, token: token.id })
       .done(function() {
         flash("", "");
-        $('#register').slideUp(500);
+        $('[data-billing-price]').text(price / 100);
+        $('#billing').slideUp(500);
         $('#complete').delay(10).slideDown(500);
         if (type === "cash")
           $("#cash-reminder").show();
