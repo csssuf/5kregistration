@@ -36,12 +36,12 @@ def superadmin_index():
 @superadmin_login_required
 def superadmin_create():
     if request.method == "POST":
-        if Admin.query.filter(Admin.username == request.form["username"].first()) != None:
+        if Admin.query.filter(Admin.username == request.form["username"]).first() != None:
             flash("User already exists.", "danger")
             return redirect('/admin/superadmin/')
         nadmin = Admin(uname=request.form["username"],
                        pwhash=hashlib.sha256(request.form["password"]).hexdigest(),
-                       superadmin=request.form["superadmin"])
+                       superadmin=("superadmin" in request.form))
         db_session.add(nadmin)
         db_session.commit()
         flash("User successfully created.", "success")
