@@ -117,9 +117,15 @@ def pay(uid):
 def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
     stripe.api_key = "sk_test_key"
 
+    actuser.name     = name
+    actuser.phone    = ''.join(c for c in phone if c.isdigit())
+    actuser.racetype = racetype
+
     metadata = {
         "uid": actuser.id,
-        "name": actuser.name
+        "name": actuser.name,
+        "phone": actuser.phone,
+        "racetype": actuser.racetype,
     }
 
     try:
@@ -137,9 +143,6 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
         return Response("Sorry, an error ocurred. Your card was not charged. Please try again in a bit or contact 5k@csh.rit.edu.", 500)
 
     if charge.paid:
-        actuser.name     = name
-        actuser.phone    = ''.join(c for c in phone if c.isdigit())
-        actuser.racetype = racetype
         actuser.paid     = True
         try:
             db_session.commit()
