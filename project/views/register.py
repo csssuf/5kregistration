@@ -134,7 +134,7 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
     except stripe.CardError as e:
         return Response(e.message + " Please try again.", 400)
     except (stripe.InvalidRequestError, stripe.AuthenticationError, stripe.APIConnectionError, stripe.StripeError) as e:
-        return Response("Sorry, an error ocurred. Please try again in a bit.", 500)
+        return Response("Sorry, an error ocurred. Your card was not charged. Please try again in a bit or contact 5k@csh.rit.edu.", 500)
 
     if charge.paid:
         actuser.name     = name
