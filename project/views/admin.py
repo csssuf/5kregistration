@@ -38,7 +38,7 @@ def registerrunner():
             return render_template("admin_register.html")
         nrunner = RegisteredUser(date = datetime.datetime.now(),
                 name=request.form["name"], email=request.form["email"],
-                paid=1000*int(request.form["paid"]), verified = True, rtype =
+                paid=100*int(request.form["paid"]), verified = True, rtype =
                 request.form["rtype"])
         db_session.add(nrunner)
         db_session.commit()
