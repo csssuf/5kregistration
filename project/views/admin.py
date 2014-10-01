@@ -3,6 +3,7 @@ from project.utils.auth import admin_login_required, superadmin_login_required
 from project.models import Admin, RegisteredUser
 from project.database import db_session
 import hashlib
+import datetime
 
 @admin_login_required
 def listusers():
@@ -28,6 +29,21 @@ def login_submit():
 @admin_login_required
 def aindex():
     return redirect('/admin/listusers/') # Fix me after more admin functions are written
+
+@admin_login_required
+def registerrunner():
+    if request.method == "POST":
+        if RegisteredUser.query.filter(RegisteredUser.email == request.form["email"]).first() != None:
+            flash("Runner already registered.", "warning")
+            return render_template("admin_register.html")
+        nrunner = RegisteredUser(date = datetime.datetime.now(),
+                name=request.form["name"], email=request.form["email"],
+                paid=1000*int(request.form["paid"]), verified = True, rtype =
+                request.form["rtype"])
+        db_session.add(nrunner)
+        db_session.commit()
+        flash("User successfully created.")
+    return render_template("admin_register.html")
 
 @superadmin_login_required
 def superadmin_index():
