@@ -19,5 +19,6 @@ add_url_routes((
     ('/admin/login/', admin.login),
     ('/admin/login/login/', admin.login_submit),
     ('/admin/superadmin/', admin.superadmin_index),
-    ('/admin/superadmin/createuser/', admin.superadmin_create)
+    ('/admin/superadmin/createuser/', admin.superadmin_create),
+    ('/admin/newrunner/', admin.registerrunner)
 ))
