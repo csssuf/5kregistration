@@ -33,6 +33,9 @@ def aindex():
 @admin_login_required
 def registerrunner():
     if request.method == "POST":
+        if not ("name" in request.form and "email" in request.form and "paid" in request.form and "rtype" in request.form):
+            flash("Please fill out all the fields.", "danger")
+            return render_template("admin_register.html")
         if RegisteredUser.query.filter(RegisteredUser.email == request.form["email"]).first() != None:
             flash("Runner already registered.", "warning")
             return render_template("admin_register.html")
