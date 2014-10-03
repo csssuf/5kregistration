@@ -66,7 +66,7 @@ def pay(uid):
     elif not actuser.emailverified:
         flash("Please verify your email.", "danger")
         return redirect('/verify/')
-    elif actuser.paid >= 1000:
+    elif actuser.paid >= 0:
         flash("You have already paid.", "success")
         return redirect('/')
     if request.method == "POST":
@@ -157,6 +157,7 @@ def pay_with_cash(actuser, name, phone, racetype, price):
     actuser.name     = name
     actuser.phone    = ''.join(c for c in phone if c.isdigit())
     actuser.racetype = racetype
+    actuser.paid     = 0
     try:
         db_session.commit()
     except:
