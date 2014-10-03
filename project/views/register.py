@@ -54,7 +54,7 @@ def billing(uid):
     elif not actuser.emailverified:
         flash("Please verify your email.", "danger")
         return redirect('/verify/')
-    elif actuser.paid >= 1000:
+    elif actuser.paid >= 0:
         flash("You have already paid.", "success")
         return redirect('/')
     return render_template("billing.html", email=actuser.email)
@@ -143,7 +143,7 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
         return Response("Sorry, an error ocurred. Your card was not charged. Please try again in a bit or contact 5k@csh.rit.edu.", 500)
 
     if charge.paid:
-        actuser.paid     = True
+        actuser.paid = charge.amount
         try:
             db_session.commit()
         except:
