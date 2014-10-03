@@ -165,7 +165,7 @@ def pay_with_cash(actuser, name, phone, racetype, price):
     return Response('Registered, but not paid (cash chosen)', 200)
 
 def get_current_user(uid):
-    debug = True
+    debug = False
     if debug:
         actuser       = RegisteredUser()
         actuser.id    = uid
