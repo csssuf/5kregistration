@@ -145,7 +145,6 @@ def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
     if charge.paid:
         actuser.paid = charge.amount
         try:
-            db_session.add(actuser)
             db_session.commit()
         except:
             return Response('Paid, but encountered an error. Please contact 5k@csh.rit.edu.', 500)
@@ -159,7 +158,6 @@ def pay_with_cash(actuser, name, phone, racetype, price):
     actuser.phone    = ''.join(c for c in phone if c.isdigit())
     actuser.racetype = racetype
     try:
-        db_session.add(actuser)
         db_session.commit()
     except:
         return Response('Sorry, we encountered an error. Please contact 5k@csh.rit.edu or try again later.', 500)
