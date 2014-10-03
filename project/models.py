@@ -11,7 +11,7 @@ class RegisteredUser(Base):
     paid = Column(Integer)
     reg_uuid = Column(String(37))
     racetype = Column(Enum('5k', 'funrun', name='racetypes'))
-    phone = Column(Integer)
+    phone = Column(String(10))
 
     def __init__(self, date=None, name=None, email=None, paid=-1, reg_uuid=None, verified=False, rtype='5k'):
         self.date = date
