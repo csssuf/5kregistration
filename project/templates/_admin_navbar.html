@@ -1,0 +1,21 @@
+<div class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a data-target="#navcollapse" data-toggle="collapse" class="navbar-toggle btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+		</div>
+		<a class="navbar-brand" href="#">5K Admin Utilities</a>
+		<div class="navbar-collapse collapse" id="navcollapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/admin/listusers/">List Runners</a></li>
+				<li><a href="/admin/newrunner/">New Runner</a></li>
+				{% if session.superadmin %}
+				<li><a href="/admin/superadmin/">Superadmin Functions</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
