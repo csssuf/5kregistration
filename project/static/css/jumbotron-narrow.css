@@ -12,7 +12,7 @@
 
 /* Space out content a bit */
 body {
-  margin: 50px 0 0;
+  margin: 45px 0 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -45,26 +45,23 @@ body {
 
 .footer-custom{
 	padding-top: 10px;
-  	color: #FFF;
+	color: #FFF;
 	width:100%;
-	background:#FF9933;
-	left:0;
-	bottom:0;
-	position:fixed;
-	z-index:5;
+	background:#FF6600;
+  display: inline-block;
 }
 
 /* Customize container */
 @media (min-width: 768px) {
   .container {
     max-width: 100%;
-	background: url(/static/images/tiger_stripes.png);
+	background: url(/static/images/cream_noise.png);
 	background-repeat: repeat;
   }
 }
 @media (max-width: 767px) {
   .container {
-	background: url(/static/images/tiger_stripes.png);
+	background: url(/static/images/cream_noise.png);
 	background-repeat: repeat;
   }
 }

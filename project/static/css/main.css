@@ -5,6 +5,41 @@
   CREAM:    #fcebcb
 */
 
+.jumbotron {
+  background: url(/static/images/leaves.png) center center;
+}
+.jumbotron h1 {
+  color: #FF6600;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+.jumbotron p {
+  color: #fff;
+  font-weight: 100;
+  line-height: 1.6em;
+  margin: 0.5em auto;
+  max-width: 800px;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+}
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .jumbotron p {
+    font-weight: 200;
+  }
+}
+.marketing {
+  color: #924F19;
+}
+.marketing h1, .marketing h4 {
+  color: #FF6600;
+}
+.marketing.qa {
+  padding-bottom: 50px;
+}
+.register {
+  background: #6F3E0D;
+}
+.register h1 {
+  margin-top: -5px;
+}
 .admin .navbar+.row {
   margin-top: 20px;
 }
@@ -84,7 +119,7 @@ h1.billing-title {
 .form-full-width .form-control {
   width: 70%;
   font-size: 1.5em;
-  text-align: center;
+  text-align: left;
 }
 
 .has-success .form-control, .has-success .form-control:focus, .has-success .input-group span {
@@ -152,8 +187,17 @@ h1.billing-title {
   background: #FF6600;
 }
 @media (max-width: 767px){
+  .form-control {
+    width: 100%;
+  }
+  .form-control {
+    line-height: 1em
+  }
   .form-full-width .form-control {
     font-size: 1.25em
+  }
+  h1.billing-title {
+    font-size: 2.5em
   }
   .btn-prereg{
     font-size: 1em;
