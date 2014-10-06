@@ -81,7 +81,7 @@ def pay(uid):
         if request.form['racetype'] != '5k' and request.form['racetype'] != 'funrun':
             errors += "Please select the type of race.<br>"
 
-        if datetime.datetime.now() > datetime.datetime(2014, 10, 5):
+        if datetime.datetime.now() >= datetime.datetime(2014, 10, 18):
             min_price = 1500
         else:
             min_price = 1000
