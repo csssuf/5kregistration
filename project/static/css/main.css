@@ -38,7 +38,8 @@
 
 .cta-img {
   height: 60px;
-  margin: 0 9px -20px;
+  margin: 13px auto 0;
+  display: block;
 }
 
 .marketing {
@@ -284,11 +285,7 @@ h1.billing-title {
     padding: 10px 0px 10px 0px;
     width:100px
   }
-  .jumbotron.main p {
-    margin-bottom: 1em;
-  }
   .cta-img {
-    display: block;
-    margin: 0px auto;
+    margin: 0px auto 12px;
   }
 }
