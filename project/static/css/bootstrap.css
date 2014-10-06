@@ -3542,31 +3542,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #FFF;
   background-color: transparent;
 }
-
-.navbar-default .navbar-text {
-  color: #FFF;
-}
-.navbar-text-a {
-  color: #FFF;
-  text-decoration:none;
-}
-.navbar-text-a:hover {
-  color: #FFF6ED;
-  text-decoration:none;
-}
-
-@media (max-width: 768px) {
-  .navbar-text {
-	text-align: center;
-
-  }
-}
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #FFF6ED;
+  color: #333;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,

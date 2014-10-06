@@ -3,6 +3,7 @@
   BROWN:    #924F19
   DARK B:   #6F3E0D
   CREAM:    #fcebcb
+  YELLOW:   #ffea00
 */
 
 .jumbotron {
@@ -39,6 +40,32 @@
 }
 .register h1 {
   margin-top: -5px;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffea00;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  color: #ffea00;
+}
+.navbar-default .navbar-text {
+  color: #FFF;
+}
+a.navbar-text {
+  color: #FFF;
+  text-decoration:none;
+}
+a.navbar-text:hover {
+  color: #ffea00;
+  text-decoration:none;
+}
+@media (max-width: 768px) {
+  .navbar-right {
+    text-align: center;
+    padding: 5px 0 11.5px;
+  }
 }
 .admin .navbar+.row {
   margin-top: 20px;
@@ -180,6 +207,10 @@ h1.billing-title {
   text-decoration: none;
   border:none;
   -webkit-appearance:none;
+}
+.btn-prereg:hover {
+  color: #fff;
+  text-decoration: none;
 }
 .btn-billing {
    /*margin-top: 20px;*/
