@@ -10,6 +10,7 @@
           $('html,body').animate({
             scrollTop: target.offset().top
           }, 1000);
+          $('.navbar-collapse').collapse('hide');
           return false;
         }
       }
