@@ -180,6 +180,28 @@ h1.billing-title {
   color: #FF6600;
 }
 
+.pay-action {
+  padding: 0 5px;
+}
+.pay-action:first-child {
+  padding-left: 0;
+}
+.pay-action:last-child {
+  padding-right: 0;
+}
+.pay-action .btn {
+  width: 100%;
+  margin-bottom: 2px;
+}
+.pay-action p {
+  font-size: 0.93em;
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 0.25em 0 1px;
+  line-height: 1.4em;
+}
+
 .control-label {
   font-size: 1.2em;
   line-height: 1.8em;
@@ -281,6 +303,10 @@ h1.billing-title {
   }
   h1.billing-title {
     font-size: 2.5em
+  }
+  .pay-action {
+    padding: 0;
+    margin-bottom: 1em;
   }
   .btn-prereg{
     font-size: 1.25em;
