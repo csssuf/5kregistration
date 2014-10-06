@@ -26,11 +26,11 @@
   line-height: 1.6em;
   margin: 0.5em auto;
   max-width: 800px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
 }
-@media (-webkit-min-device-pixel-ratio: 2) {
+@media (-webkit-min-device-pixel-ratio: 1.5) {
   .jumbotron p {
     font-weight: 200;
   }
