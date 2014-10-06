@@ -5,14 +5,6 @@
 
   $("form input[name=phone]").mask("(999) 999-9999");
 
-  $('form input[name=name]').on('keyup, input', function() {
-    var toggle = $(this).val().length > 0;
-    if (toggle ^ $('form button[disabled]').first().is(':disabled'))
-      return;
-    $('form button').prop('disabled', !toggle);
-    $('.pay-method').stop().fadeTo(250, toggle * 0.75 + 0.25);
-  });
-
   var processPayment = function(type, token) {
     window.paymentProcessing = true;
 

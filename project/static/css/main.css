@@ -122,14 +122,18 @@ a.navbar-text:hover {
   -webkit-appearance:none;
 }
 
-form-control:-moz-placeholder {
+.form-control:-moz-placeholder {
    color: #bbb;
    transition: color 0.5s ease, border-color 0.5s ease;
 }
 
-form-control:-ms-input-placeholder {
+.form-control:-ms-input-placeholder {
    color: #bbb;
    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.form-control:focus:-webkit-autofill, .form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 .form-control:focus, .form-control:focus::-webkit-input-placeholder {
@@ -147,7 +151,6 @@ form-control:-ms-input-placeholder {
 
 .has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
   color: #FF8A8A;
-  text-shadow: 1px 1px 7px rgba(0,0,0,0.6);
 }
 
 h1.billing-title {
@@ -155,9 +158,28 @@ h1.billing-title {
   font-size: 4em;
 }
 
+.billing .control-label, .billing .help-block {
+  transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease;
+}
+
 .billing .form-group {
   text-align: left;
   color: #fcebcb;
+}
+
+.billing .control-label {
+  font-weight: normal;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+}
+
+.billing .form-control {
+  background: #fff;
+  background: rgba(255,255,255,0.95);
+}
+.billing .form-control:focus {
+  background: #fff;
+  background: rgba(255,255,255,1);
 }
 
 .billing .btn-group i {
@@ -224,7 +246,11 @@ h1.billing-title {
 }
 
 .help-block {
-  color: #fcebcb;
+  color: #fff;
+  font-weight: normal;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+  font-size: 12px;
+  margin: 0.5em 0.5em 0;
 }
 
 .has-success .form-control, .has-success .form-control:focus, .has-success .input-group span {
@@ -255,6 +281,25 @@ h1.billing-title {
 
 .active .visible-active {
   display: inline-block !important;
+}
+
+.alert-info {
+  background: #36c0b5;
+  background: rgba(54, 181, 192, 0.75);
+  border-color: #417683;
+}
+.alert-success {
+  background: #7AC25C;
+  background: rgba(95, 192, 54, 0.75);
+  border-color: #418342;
+}
+.alert-danger {
+  background: #c04c41;
+  background: rgba(192, 65, 54, 0.75);
+  border-color: #834641;
+}
+.jumbotron .alert {
+  color: #fff;
 }
 
 .cust-btn{
