@@ -328,12 +328,12 @@ h1.billing-title {
     margin: 0px auto 12px;
   }
   .form-control::-webkit-input-placeholder {
-    line-height: 1.4em;
+    line-height: 1.3em;
   }
   form-control:-moz-placeholder {
-    line-height: 1.4em;
+    line-height: 1.3em;
   }
   form-control:-ms-input-placeholder {
-    line-height: 1.4em;
+    line-height: 1.3em;
   }
 }
