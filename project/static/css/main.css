@@ -6,19 +6,26 @@
   YELLOW:   #ffea00
 */
 
+body {
+  height: 100%;
+  background: url(/static/images/leaves.png) center -100px repeat;
+  padding-bottom: 40px;
+}
+
 .jumbotron.main {
   padding-left: 0;
   padding-right: 0;
+  background: url(/static/images/leaves.png) center center repeat;
 }
 .jumbotron.main h1 {
   margin-top: 5px;
 }
-.jumbotron {
-  background: url(/static/images/leaves.png) center center;
-}
 .jumbotron h1 {
   color: #FF6600;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+.jumbotron {
+  background: transparent;
 }
 .jumbotron p {
   color: #fff;
