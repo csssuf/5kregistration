@@ -85,9 +85,12 @@ a.navbar-text:hover {
   text-decoration:none;
 }
 @media (max-width: 768px) {
+  .navbar-nav {
+    margin-top: 0;
+  }
   .navbar-right {
     text-align: center;
-    padding: 5px 0 11.5px;
+    padding: 3px 0 9.5px;
   }
 }
 .admin .navbar+.row {
