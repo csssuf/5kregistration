@@ -76,6 +76,7 @@ a.navbar-text:hover {
 }
 
 .input-group-addon {
+  color: #555;
   border: 2px solid #FF6600;
   background: #F9EFDB;
 }
@@ -121,17 +122,39 @@ form-control:-ms-input-placeholder {
    color: #FF6600;
 }
 
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
+  color: #FF8A8A;
+  text-shadow: 1px 1px 7px rgba(0,0,0,0.6);
+}
+
 h1.billing-title {
   margin-bottom: 0.7em;
   font-size: 4em;
 }
 
 .billing .form-group {
-  text-align: left
+  text-align: left;
+  color: #fcebcb;
 }
 
 .billing .btn-group i {
   margin-right: 0.5em;
+}
+
+.billing .btn-group .btn {
+  color: #555;
+  background: #fff;
+  border: 2px solid #FF6600;
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+
+.billing .btn-group .btn.active {
+  box-shadow: inset 0px 0px 7px rgba(255, 103, 0, 1);
+}
+
+.billing .btn-group .btn.active i {
+  color: #FF6600;
 }
 
 .control-label {
@@ -149,6 +172,10 @@ h1.billing-title {
   text-align: left;
 }
 
+.help-block {
+  color: #fcebcb;
+}
+
 .has-success .form-control, .has-success .form-control:focus, .has-success .input-group span {
   border-color: #FF6600;
 }
@@ -159,6 +186,7 @@ h1.billing-title {
 
 .has-success .input-group span {
   background: #F9EFDB;
+  color: #555;
 }
 
 .donation-thank-you {
@@ -166,7 +194,7 @@ h1.billing-title {
   width: 140px;
   text-align: right;
   margin-right: 33px;
-  top: 0.4em !important;
+  top: 0.36em !important;
   color: #028F05;
 }
 
@@ -231,9 +259,8 @@ h1.billing-title {
     font-size: 2.5em
   }
   .btn-prereg{
-    font-size: 1em;
-    padding: 10px 20px 10px 20px;
-
+    font-size: 1.25em;
+    padding: 14px 26px;
   }
   .btn-billing{
     font-size: 1em;

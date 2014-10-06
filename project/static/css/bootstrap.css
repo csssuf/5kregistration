@@ -1798,7 +1798,6 @@ output {
 @media (max-width: 767px){
 .form-control{
 	width:60%;
-	font-size:1em;
 }
 
 }
