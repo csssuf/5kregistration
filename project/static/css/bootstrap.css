@@ -1750,7 +1750,7 @@ output {
   font-family: Arial;
   color: #ffffff;
   font-size: 1.5em;
-  background: #FFA319;
+  background: #FF6600;
   padding: 11px 30px 11px 30px;
   margin-left: 15px;
   text-decoration: none;
@@ -1777,7 +1777,7 @@ output {
 .form-control {
   font-size: 1.2em;
 	font-family: 'Open Sans', sans-serif;
-	color: #FFA319;
+	color: #FF6600;
   width: 100%;
 	display: block-inline;
 	padding: 0.5em 0.7em;
@@ -1806,14 +1806,14 @@ output {
   border: 2px solid #FFC266;
 }
 .form-control::-moz-placeholder {
-  color: #FFA319;
+  color: #FF6600;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #FFA319;
+  color: #FF6600;
 }
 .form-control::-webkit-input-placeholder {
-  color: #FFA319;
+  color: #FF6600;
 }
 .form-control[disabled],
 .form-control[readonly],
@@ -3531,8 +3531,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #FF9933;
-  border-color: #FFAD5C;
+  background-color: #FF6600;
+  border-color: #E4570B;
 }
 .navbar-default .navbar-brand {
   color: #FFF;

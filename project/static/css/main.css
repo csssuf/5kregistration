@@ -1,13 +1,20 @@
+/*
+  ORANGE:   #FF6600
+  BROWN:    #924F19
+  DARK B:   #6F3E0D
+  CREAM:    #fcebcb
+*/
+
 .admin .navbar+.row {
   margin-top: 20px;
 }
 
 .form-control {
-  border: 2px solid #FFA319;
+  border: 2px solid #FF6600;
 }
 
 .input-group-addon {
-  border: 2px solid #FFA319;
+  border: 2px solid #FF6600;
   background: #F9EFDB;
 }
 
@@ -16,7 +23,7 @@
 }
 
 .jumbotron .form-control.no-border:focus {
-  border-color: #FFA319;
+  border-color: #FF6600;
 }
 
 .form-control {
@@ -40,16 +47,16 @@ form-control:-ms-input-placeholder {
 }
 
 .form-control:focus, .form-control:focus::-webkit-input-placeholder {
-   color: #FFA319;
+   color: #FF6600;
 }
 .form-control:focus, .form-control:focus:-moz-placeholder { /* Firefox 18- */
-   color: #FFA319;
+   color: #FF6600;
 }
 .form-control:focus, .form-control:focus::-moz-placeholder {  /* Firefox 19+ */
-   color: #FFA319;
+   color: #FF6600;
 }
 .form-control:focus, .form-control:focus:-ms-input-placeholder {
-   color: #FFA319;
+   color: #FF6600;
 }
 
 h1.billing-title {
@@ -81,7 +88,7 @@ h1.billing-title {
 }
 
 .has-success .form-control, .has-success .form-control:focus, .has-success .input-group span {
-  border-color: #FFA319;
+  border-color: #FF6600;
 }
 
 .has-success .control-label, .has-success .input-group span, .has-success .help-block {
@@ -133,7 +140,7 @@ h1.billing-title {
   font-family: Arial;
   color: #ffffff;
   font-size: 1.5em;
-  background: #FFA319;
+  background: #FF6600;
   padding: 20px 40px 20px 40px;
   text-decoration: none;
   border:none;
@@ -142,7 +149,7 @@ h1.billing-title {
 .btn-billing {
    /*margin-top: 20px;*/
   color: #ffffff;
-  background: #FFA319;
+  background: #FF6600;
 }
 @media (max-width: 767px){
   .form-full-width .form-control {
