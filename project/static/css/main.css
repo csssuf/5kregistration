@@ -201,6 +201,12 @@ h1.billing-title {
   margin: 0.25em 0 1px;
   line-height: 1.4em;
 }
+.pay-action a {
+  color: #fff;
+}
+.pay-action a:hover {
+  text-decoration: underline;
+}
 
 .control-label {
   font-size: 1.2em;
