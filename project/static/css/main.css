@@ -6,6 +6,13 @@
   YELLOW:   #ffea00
 */
 
+.jumbotron.main {
+  padding-left: 0;
+  padding-right: 0;
+}
+.jumbotron.main h1 {
+  margin-top: 5px;
+}
 .jumbotron {
   background: url(/static/images/leaves.png) center center;
 }
@@ -19,6 +26,8 @@
   line-height: 1.6em;
   margin: 0.5em auto;
   max-width: 800px;
+  padding-left: 10px;
+  padding-right: 10px;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
 }
 @media (-webkit-min-device-pixel-ratio: 2) {
@@ -26,6 +35,12 @@
     font-weight: 200;
   }
 }
+
+.cta-img {
+  height: 60px;
+  margin: 0 9px -20px;
+}
+
 .marketing {
   color: #924F19;
 }
@@ -261,11 +276,18 @@ h1.billing-title {
   .btn-prereg{
     font-size: 1.25em;
     padding: 14px 26px;
+    margin: 10px 0;
   }
   .btn-billing{
     font-size: 1em;
     padding: 10px 0px 10px 0px;
     width:100px
-
+  }
+  .jumbotron.main p {
+    margin-bottom: 1em;
+  }
+  .cta-img {
+    display: block;
+    margin: 0px auto;
   }
 }
