@@ -250,6 +250,7 @@ h1.billing-title {
   text-decoration: none;
   border:none;
   -webkit-appearance:none;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
 }
 .btn-prereg:hover {
   color: #fff;
