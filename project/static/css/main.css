@@ -84,7 +84,7 @@ a.navbar-text:hover {
   color: #ffea00;
   text-decoration:none;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar-nav {
     margin-top: 0;
   }
