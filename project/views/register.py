@@ -8,6 +8,7 @@ import smtplib
 import urllib
 import stripe
 import re
+import os
 
 def reg():
     if request.method == "POST":
@@ -116,7 +117,7 @@ def pay(uid):
         return Response('Invalid payment method', 400)
 
 def pay_with_stripe(actuser, name, phone, racetype, price, stripe_token):
-    stripe.api_key = "sk_test_key"
+    stripe.api_key = os.getenv("STRIPE_API_KEY","sk_test_key")
 
     actuser.name     = name
     actuser.phone    = ''.join(c for c in phone if c.isdigit())
