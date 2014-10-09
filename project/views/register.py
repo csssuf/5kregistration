@@ -1,6 +1,7 @@
 from flask import render_template, flash, session, request, redirect, Response
 from project.models import RegisteredUser
 from project.database import db_session
+from project.utils.email import send_email
 import datetime
 import uuid
 import smtplib
@@ -45,7 +46,7 @@ def verify():
         actuser.emailverified = True
         db_session.commit()
         return redirect('/billing/%d/' % actuser.id)
-    return render_template("verify.html")
+    return render_template("verify.html", uid=actuser.id)
 
 def billing(uid):
     actuser = get_current_user(uid)
@@ -177,3 +178,18 @@ def get_current_user(uid):
         if not actuser:
             flash('Invalid participant', 'danger')
     return actuser
+
+def resend(uid):
+    actuser = RegisteredUser.quer.filter(RegisteredUser.id == uid).first()
+    if actuser is None:
+        flash("No such user.")
+        return redirect('/')
+    mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for Charity: Water!
+
+To confirm your email address, please click here:
+http://5k.csh.rit.edu/verify?key=%s&user=%s""" % (actuser.email, actuser.reg_uuid, urllib.quote(actuser.email))
+    if send_email(actuser.email, mail):
+        flash("Email successfully resent.")
+    else:
+        flash("Something went wrong sending your email. Please contact 5k@csh.rit.edu.")
+    return redirect('/')

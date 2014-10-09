@@ -1,1 +1,1 @@
-from project.utils import auth
+from project.utils import auth, email

@@ -20,5 +20,6 @@ add_url_routes((
     ('/admin/login/login/', admin.login_submit),
     ('/admin/superadmin/', admin.superadmin_index),
     ('/admin/superadmin/createuser/', admin.superadmin_create),
-    ('/admin/newrunner/', admin.registerrunner)
+    ('/admin/newrunner/', admin.registerrunner),
+    ('/resend/<int:uid>/', register.resend)
 ))
