@@ -385,3 +385,8 @@ h1.billing-title {
     line-height: 1.3em;
   }
 }
+@media (min-width: 2048px) {
+  body, .jumbotron.main {
+    background-image: url(/static/images/leaves-tileable.jpg);
+  }
+}
