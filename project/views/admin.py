@@ -8,7 +8,7 @@ import datetime
 @admin_login_required
 def listusers():
     return render_template("admin_listusers.html",
-            users=db_session.query(RegisteredUser).order_by(RegisteredUser.id))
+            users=db_session.query(RegisteredUser).order_by(RegisteredUser.id), int=int)
 
 def login():
     return render_template("admin_login.html")

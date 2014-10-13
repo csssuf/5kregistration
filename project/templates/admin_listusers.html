@@ -23,7 +23,7 @@
 								<td>{{ user.id }}</td>
 								<td>{{ user.email }}</td>
 								<td>{{ user.name }}</td>
-								<td>{{ user.paid }}</td>
+								<td>${{ user.paid / 100 if user.paid % 100 != 0 else int(user.paid / 100) }}</td>
 							</tr>
 						{% endfor %}
 						</tbody>
