@@ -31,7 +31,7 @@ To confirm your email address, please click here: http://5k.csh.rit.edu/verify?k
                 date=datetime.datetime.now(), reg_uuid = str(reguuid))
         db_session.add(newuser)
         db_session.commit()
-        flash("Successfully registered.", "success")
+        flash("Successfully registered. Please check your email.", "success")
         return redirect('/')
 
 def verify():

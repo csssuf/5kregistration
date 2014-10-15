@@ -20,7 +20,7 @@
 						<tbody>
 						{% for user in users %}
 							<tr class="{% if user.paid >= 1000 %}success{% elif not user.emailverified %}danger{% else %}warning{% endif %}">
-								<td>{{ user.id }}</td>
+								<td>{{ user.id - 6 }}</td>
 								<td>{{ user.email }}</td>
 								<td>{{ user.name }}</td>
 								<td>${{ user.paid / 100 if user.paid % 100 != 0 else int(user.paid / 100) }}</td>
