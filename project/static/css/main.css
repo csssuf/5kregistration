@@ -49,6 +49,13 @@ body {
   display: block;
 }
 
+.cta-or {
+  clear: none;
+  display: inline-block;
+  line-height: 2.6em !important;
+  vertical-align: bottom;
+}
+
 .marketing {
   color: #924F19;
 }
@@ -388,5 +395,11 @@ h1.billing-title {
 @media (min-width: 2048px) {
   body, .jumbotron.main {
     background-image: url(/static/images/leaves-tileable.jpg);
+  }
+}
+@media (max-width: 480px) {
+  .cta-or {
+    display: block;
+    line-height: 0.5em !important;
   }
 }
