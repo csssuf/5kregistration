@@ -17,7 +17,7 @@ def reg():
             flash("Error: that email is already registered.", "danger")
             return redirect('/')
         reguuid = uuid.uuid1()
-        mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for Charity: Water!
+        mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for charity: water!
 
 To confirm your email address, please click here: http://5k.csh.rit.edu/verify?key=%s&user=%s""" % (request.form["email"], reguuid, urllib.quote(request.form["email"]))
         try:
@@ -185,7 +185,7 @@ def resend(uid):
     if actuser is None:
         flash("No such user.")
         return redirect('/')
-    mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for Charity: Water!
+    mail = """From: 5k@csh.rit.edu\r\nTo: %s\r\nSubject: CSH 5K Email Confirmation\r\n\r\nWelcome to the CSH 5K for charity: water!
 
 To confirm your email address, please click here:
 http://5k.csh.rit.edu/verify?key=%s&user=%s""" % (actuser.email, actuser.reg_uuid, urllib.quote(actuser.email))
