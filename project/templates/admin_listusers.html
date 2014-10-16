@@ -4,7 +4,7 @@
 	{% include "_admin_navbar.html" %}
 	{% include "_flashes.html" %}
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading">Users</div>
 				<div class="panel-body">
@@ -12,18 +12,30 @@
 						<thead>
 							<tr>
 								<td>ID</td>
-								<td>Email</td>
 								<td>Name</td>
+								<td>Email</td>
+								<td>Date Registered</td>
+								<td>Phone</td>
 								<td>Paid?</td>
 							</tr>
 						</thead>
 						<tbody>
 						{% for user in users %}
-							<tr class="{% if user.paid >= 1000 %}success{% elif not user.emailverified %}danger{% else %}warning{% endif %}">
+						<tr class="{% if user.paid >= 1000 %}success{% elif user.paid == 0 %}warning{% else %}danger{% endif %}">
 								<td>{{ user.id - 6 }}</td>
+								<td><b>{{ '' if user.name == None else user.name }}</b></td>
 								<td>{{ user.email }}</td>
-								<td>{{ user.name }}</td>
-								<td>${{ user.paid / 100 if user.paid % 100 != 0 else int(user.paid / 100) }}</td>
+								<td>{{ user.date }}</td>
+								<td>{{ '' if user.phone == None else ('(' + user.phone[:3] + ') ' + user.phone[3:6] + '-' + user.phone[6:]) }}</td>
+								<td>
+								{% if user.paid == -1 %}
+								No
+								{% elif user.paid == 0 %}
+								Cash
+								{% else %}
+								Credit (${{ user.paid / 100 }})
+								{% endif %}
+								</td>
 							</tr>
 						{% endfor %}
 						</tbody>
