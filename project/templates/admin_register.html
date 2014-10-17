@@ -20,6 +20,9 @@
 							<input type="text" class="form-control" id="reg-paid" name="paid" placeholder="Amount paid">
 						</div>
 						<div class="form-group">
+		          <input type="text" name="phone" value="" class="form-control" placeholder="(___) ___-____">
+			      </div>
+						<div class="form-group">
 							<input type="radio" name="rtype" value="5k">5K<br />
 							<input type="radio" name="rtype" value="funrun">Fun Run<br />
 						</div>
@@ -30,4 +33,10 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+{% block javascripts %}
+	<script src="/static/js/jquery.maskedinput.min.js"></script>
+	<script>
+		$("form input[name=phone]").mask("(999) 999-9999");
+	</script>
 {% endblock %}

@@ -41,8 +41,9 @@ def registerrunner():
             return render_template("admin_register.html")
         nrunner = RegisteredUser(date = datetime.datetime.now(),
                 name=request.form["name"], email=request.form["email"],
-                paid=100*int(request.form["paid"]), verified = True, rtype =
-                request.form["rtype"])
+                phone=''.join(c for c in request.form["phone"] if c.isdigit()),
+                paid=100*int(request.form["paid"]), verified = True,
+                rtype =request.form["rtype"])
         db_session.add(nrunner)
         db_session.commit()
         flash("User successfully created.")
