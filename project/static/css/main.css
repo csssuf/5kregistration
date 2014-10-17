@@ -307,6 +307,7 @@ h1.billing-title {
   background: #c04c41;
   background: rgba(192, 65, 54, 0.75);
   border-color: #834641;
+  color: #fff;
 }
 .jumbotron .alert {
   color: #fff;
