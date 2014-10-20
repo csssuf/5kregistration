@@ -13,7 +13,7 @@ class RegisteredUser(Base):
     racetype = Column(Enum('5k', 'funrun', name='racetypes'))
     phone = Column(String(10))
 
-    def __init__(self, date=None, name=None, email=None, paid=-1, reg_uuid=None, verified=False, rtype='5k'):
+    def __init__(self, date=None, name=None, email=None, paid=-1, reg_uuid=None, verified=False, rtype='5k', phone=None):
         self.date = date
         self.name = name
         self.email = email
@@ -21,6 +21,7 @@ class RegisteredUser(Base):
         self.reg_uuid = reg_uuid
         self.emailverified = verified
         self.racetype = rtype
+	self.phone = phone
 
     def __repr__(self):
         return "<RegisteredUser %s (id %d)>" % (self.email, self.id)
